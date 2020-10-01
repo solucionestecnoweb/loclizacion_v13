@@ -1,0 +1,16 @@
+/***************************
+Inner banner
+****************************/
+.inner-intro ul.page-breadcrumb{padding:0; margin:0;}
+.inner-intro ul.page-breadcrumb li{ display: inline-block; list-style: none; padding:0 6px; color: #333; text-transform: uppercase; margin:5px 0; position:relative;}
+.inner-intro ul.page-breadcrumb li a{font-size:14px; line-height:22px; color: #999999}
+.inner-intro ul.page-breadcrumb li span{font-size:14px;}
+.inner-intro ul.page-breadcrumb li:before{content:"/"; position:absolute; left:-3px; top:0px; color:rgba(0,0,0,0.5); font-size:10px;}
+.inner-intro ul.page-breadcrumb li:first-child,{padding-left:0;}
+.inner-intro ul.page-breadcrumb li:last-child{padding-right:0;}
+.inner-intro ul.page-breadcrumb li:first-child:before{content:normal;}
+.inner-intro .title{color: #333;  font-size: 48px; font-weight: 400;}
+
+.inner-intro.dark-bg ul.page-breadcrumb li,
+.inner-intro.dark-bg ul.page-breadcrumb li:before,
+.inner-intro.dark-bg ul.page-breadcrumb li a{color:rgba(255,255,255,0.5); }

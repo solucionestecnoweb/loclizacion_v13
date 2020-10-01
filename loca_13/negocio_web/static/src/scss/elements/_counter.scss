@@ -1,0 +1,96 @@
+/*================================================*/
+/* Counter */
+/*================================================*/
+.counter-box {
+	text-align: center;
+}
+.counter-box .icon i {
+	color: #fd8558;
+	font-size: 60px;
+	line-height: 60px;
+	font-weight: 600; 
+	margin-bottom: 25px;
+}
+.counter-box .number {
+	color: #fd8558;
+	font-size: 60px;
+	line-height: 60px;
+	font-weight: 600; 
+	margin-bottom: 15px;
+}
+.counter-box p{
+	font-size: 18px;
+	margin-bottom: 0; 
+}
+
+/* Counter Icons */
+.counter-box.counter-icon .number {
+	color: #323232;
+}
+
+/* Counter Boxed */
+.counter-box.counter-boxed {
+	background: #ffffff;
+	padding: 50px 10px;
+	box-shadow: 0 3px 20px rgba(0,0,0,0.1);
+}
+
+/* Icon Left */
+.counter-box.left-icon {
+	display: flex;
+	text-align: left;
+}
+.counter-box.left-icon .icon {
+	flex: 0 0 70px;
+	width: 70px;
+	height: 70px;
+	display: flex;
+	justify-content: center;
+	margin-right: 25px;
+}
+.counter-box.left-icon .icon i{
+	font-size: 26px;
+	line-height: 26px;
+	margin: 0;
+	align-self: center;
+}
+.counter-box.left-icon .counter-info {
+	align-self: center;
+}
+.counter-box.left-icon .number {
+    color: #323232;
+    font-size: 30px;
+    line-height: 28px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.counter-box.left-icon p {
+    font-size: 16px;
+}
+
+/* Icon Flat */
+.counter-box.icon-flat .icon {
+	background: #fd8558;
+}
+.counter-box.icon-flat .icon i{
+	color: #ffffff;
+}
+
+/* Icon Border */
+.counter-box.icon-border .icon {
+	background: none;
+	border: 2px solid #fd8558;
+}
+.counter-box.icon-border .icon {
+	color: #fd8558;
+}
+
+/* Icon Rounded */
+.counter-box.icon-rounded .icon {
+	border-radius: 10px;
+}
+
+/* Icon Round */
+.counter-box.icon-round .icon {
+	border-radius: 50px;
+}

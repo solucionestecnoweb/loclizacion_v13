@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<record id="home_trans" model="website.page">
+<field name="name">Home Transport</field>
+<field name="url">/home-transport</field>
+<field name="type">qweb</field>
+<field name="key">negocio_web.home_trans</field>
+<field name="website_published">True</field>
+<field name="arch" type="xml">
+<t t-name="negocio_web.home_trans_template">
+<t t-call="website.layout">
+  <div id="wrap" class="oe_structure oe_empty">
+           <section id="negocio_slider" class="carousel s_carousel s_carousel_default s_carousel_alan slide main-half-slider white-text" data-ride="carousel">
+	<ol class="carousel-indicators">
+		<li data-target="#negocio_slider" data-slide-to="0" class="active"></li>
+		<li data-target="#negocio_slider" data-slide-to="1" class=""></li>
+	</ol>
+	<div class="carousel-inner">
+		<div class="carousel-item bg active" style="background-image: url('/negocio_web/static/src/img/transport/slider-01.jpg');">
+			<div class="container">
+				<div class="row slider align-items-center slider">
+					<div class="col-md-6">
+						<div class="banner-text">
+							<h2 class="banner-title md fw-700">Premium Worldwide<br/>Logistics Network </h2>
+							<div class="description">Lorem Ipsum is simply dummy text of the printing.</div>
+							<div class="button-group"> <a href="#" class="btn btn-primary">Get started</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 offset-md-2 text-center"> <a href="#"><span class="play-video play-static kd-animate"><span class="fa fa-play"></span></span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="carousel-item bg" style="background-image: url('/negocio_web/static/src/img/transport/slider-02.jpg');">
+			<div class="container">
+				<div class="row slider align-items-center slider">
+					<div class="col-md-6">
+						<div class="banner-text">
+							<h2 class="banner-title md fw-700">Premium Worldwide<br/>Logistics Network </h2>
+							<div class="description">Lorem Ipsum is simply dummy text of the printing.</div>
+							<div class="button-group"> <a href="#" class="btn btn-primary">Get started</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 offset-md-2 text-center"> <a href="#"><span class="play-video play-static kd-animate"><span class="fa fa-play"></span></span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section-md grey-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3 text-center">
+				<div class="section-title">
+					<h2 class="f-weight-700 mb-0">TRANSPORT COMPANY</h2>
+					<span class="heading-separator h-center mt-2"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="feature-box with-bg px-3 py-3 d-flex">
+					<div class="feature-icon pr-3"> <span class="icon">
+                    <i class="fa fa-users"></i>
+                  </span>
+					</div>
+					<div class="feature-info">
+						<h4 class="title f-weight-600 mb-1" style="font-size: 18px">Professional Staff</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					</div>
+				</div>
+				<div class="feature-box with-bg px-3 py-3 d-flex mt-4">
+					<div class="feature-icon pr-3"> <span class="icon">
+                    <i class="fa fa-truck"></i>
+                  </span>
+					</div>
+					<div class="feature-info">
+						<h4 class="title f-weight-600 mb-1" style="font-size: 18px">Fast Delivery</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 align-self-center">
+				<img src="/negocio_web/static/src/img/transport/img-02.png" class="" alt="" />
+			</div>
+			<div class="col-md-4 xs-mt-4">
+				<div class="feature-box with-bg px-3 py-3 d-flex">
+					<div class="feature-icon pr-3"> <span class="icon">
+                    <i class="fa fa-cogs"></i>
+                  </span>
+					</div>
+					<div class="feature-info">
+						<h4 class="title f-weight-600 mb-1" style="font-size: 18px">Free diagnostics</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					</div>
+				</div>
+				<div class="feature-box with-bg px-3 py-3 d-flex mt-4">
+					<div class="feature-icon pr-3"> <span class="icon">
+                    <i class="fa fa-clock-o"></i>
+                  </span>
+					</div>
+					<div class="feature-info">
+						<h4 class="title f-weight-600 mb-1" style="font-size: 18px">24/7 Service</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section-md">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-lg-5  align-self-center">
+				<div class="section-title mb-3">
+					<h2 class="f-weight-700 mb-1">A WORKFORCE TAILORED TO YOUR NEEDS</h2>
+					<span class="heading-separator"></span>
+					<p>We offer a number of general and specialized dentistry options to suit all ages and needs:</p>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<ul class="list arrow mb-2">
+							<li>Family &amp; general dentistry</li>
+							<li>Implant dentistry</li>
+							<li>Cosmetic dentistry</li>
+						</ul>
+					</div>
+					<div class="col-md-6">
+						<ul class="list arrow mb-2">
+							<li>Family &amp; general dentistry</li>
+							<li>Implant dentistry</li>
+							<li>Cosmetic dentistry</li>
+						</ul>
+					</div>
+				</div> <a href="#" class="btn btn-primary">READMORE</a>
+			</div>
+			<div class="col-md-6 col-lg-6 offset-lg-1 xs-mt-4">
+				<img src="/negocio_web/static/src/img/transport/img-01.jpg" class="img-shadow img-fluid" alt="" />
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section-md overlay bg " data-overlay-color="dark" data-overlay="5" style="background: url('/negocio_web/static/src/img/transport/bg-01.jpg') no-repeat 0 0;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3 text-center white-text">
+				<div class="section-title">
+					<h2 class="f-weight-700 mb-0">WE ARE DELIVERING ANYTHING</h2>
+					<span class="heading-separator h-center mt-2"></span>
+					<p>Browse our latest catalog. Choose to shop online for home delivery.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card no-rbd">
+					<img class="card-img-top" src="/negocio_web/static/src/img/transport/service-01.jpg" alt="Service" />
+					<div class="card-body text-center">
+						<h5 class="card-title f-weight-700">Transport Solution</h5>
+						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> <a href="#" class="btn btn-primary">READMORE</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card no-rbd">
+					<img class="card-img-top" src="/negocio_web/static/src/img/transport/service-02.jpg" alt="Service" />
+					<div class="card-body text-center">
+						<h5 class="card-title f-weight-700">Logistic Provider</h5>
+						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> <a href="#" class="btn btn-primary">READMORE</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card no-rbd">
+					<img class="card-img-top" src="/negocio_web/static/src/img/transport/service-03.jpg" alt="Service" />
+					<div class="card-body text-center">
+						<h5 class="card-title f-weight-700">Warehousing </h5>
+						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> <a href="#" class="btn btn-primary">READMORE</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section-md">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4  align-self-center">
+				<div class="section-title mb-3">
+					<h2 class="f-weight-700 mb-1">A WORKFORCE TAILORED TO YOUR NEEDS
+</h2>
+					<span class="heading-separator"></span>
+					<p>Tristique senectus et netus et malesuada fames ac turpis. Pharetra sit amet aliquam id diam.</p>
+				</div> <a href="#" class="btn btn-primary">READMORE</a>
+			</div>
+			<div class="col-md-7 offset-md-1 xs-mt-4">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="feature-box f-small d-flex">
+							<div class="feature-icon pr-3"> <span class="icon">
+                        <i class="fa fa-plane"></i>
+                      </span>
+							</div>
+							<div class="feature-info">
+								<h4 class="title f-weight-600 mb-1">Air Freight</h4>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="feature-box f-small d-flex">
+							<div class="feature-icon pr-3"> <span class="icon">
+                        <i class="fa fa-ship"></i>
+                      </span>
+							</div>
+							<div class="feature-info">
+								<h4 class="title f-weight-600 mb-1">Ocean Freight</h4>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mt-5 xs-mt-0">
+					<div class="col-md-6">
+						<div class="feature-box f-small d-flex">
+							<div class="feature-icon pr-3"> <span class="icon">
+                        <i class="fa fa-file-text-o"></i>
+                      </span>
+							</div>
+							<div class="feature-info">
+								<h4 class="title f-weight-600 mb-1">Real-Time Tracking</h4>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="feature-box f-small d-flex">
+							<div class="feature-icon pr-3"> <span class="icon">
+                        <i class="fa fa-truck"></i>
+                      </span>
+							</div>
+							<div class="feature-info">
+								<h4 class="title f-weight-600 mb-1">Free Delivery</h4>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section-md overlay bg white-text" data-overlay-color="dark" data-overlay="5" style="background: url('/negocio_web/static/src/img/transport/bg-02.jpg') no-repeat 0 0;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="counter-box counter-icon">
+					<div class="icon"> <i class="fa fa-smile-o"></i>
+					</div>
+					<h2 class="number"><span class="timer" data-from="0" data-to="16" data-speed="1200" data-refresh-interval="5">16</span>k</h2>
+					<p>Global Customer</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="counter-box counter-icon">
+					<div class="icon"> <i class="fa fa-diamond"></i>
+					</div>
+					<h2 class="number"><span class="timer" data-from="0" data-to="100" data-speed="1200" data-refresh-interval="5">100</span>+</h2>
+					<p>Global Customer</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="counter-box counter-icon">
+					<div class="icon"> <i class="fa fa-user-o"></i>
+					</div>
+					<h2 class="number"><span class="timer" data-from="0" data-to="150" data-speed="1200" data-refresh-interval="5">150</span>+</h2>
+					<p>Global Customer</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="counter-box counter-icon">
+					<div class="icon"> <i class="fa fa-smile-o"></i>
+					</div>
+					<h2 class="number"><span class="timer" data-from="0" data-to="500" data-speed="1200" data-refresh-interval="5">500</span>+</h2>
+					<p>Global Customer</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section-md grey-bg team-standard no-brd our-team">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3 text-center">
+				<div class="section-title">
+					<h2 class="f-weight-700 mb-0">MEET THE TEAM</h2>
+					<span class="heading-separator h-center mt-2"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4 col-md-6">
+				<div class="single-team-member">
+					<div class="wrapper">
+						<div class="img-box">
+							<img src="/negocio_web/static/src/img/transport/team-01.png" alt="" />
+						</div>
+						<div class="team-content">
+							<div class="info-meta">
+								<h6 class="name f-weight-700">Hunter Chapman</h6>
+								<span>Co-Founder</span>
+							</div>
+							<div class="team-socail">
+								<ul>
+									<li>
+										<a href="#"> <i class="fa fa-facebook"></i>
+										</a>
+									</li>
+									<li>
+										<a href="#"> <i class="fa fa-twitter"></i>
+										</a>
+									</li>
+									<li>
+										<a href="#"> <i class="fa fa-linkedin"></i>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6">
+				<div class="single-team-member">
+					<div class="wrapper">
+						<div class="img-box">
+							<img src="/negocio_web/static/src/img/transport/team-02.png" alt="" />
+						</div>
+						<div class="team-content">
+							<div class="info-meta">
+								<h6 class="name f-weight-700">Hunter Chapman</h6>
+								<span>Co-Founder</span>
+							</div>
+							<div class="team-socail">
+								<ul>
+									<li>
+										<a href="#"> <i class="fa fa-facebook"></i>
+										</a>
+									</li>
+									<li>
+										<a href="#"> <i class="fa fa-twitter"></i>
+										</a>
+									</li>
+									<li>
+										<a href="#"> <i class="fa fa-linkedin"></i>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6">
+				<div class="single-team-member">
+					<div class="wrapper">
+						<div class="img-box">
+							<img src="/negocio_web/static/src/img/transport/team-03.png" alt="" />
+						</div>
+						<div class="team-content">
+							<div class="info-meta">
+								<h6 class="name f-weight-700">Hunter Chapman</h6>
+								<span>Co-Founder</span>
+							</div>
+							<div class="team-socail">
+								<ul>
+									<li>
+										<a href="#"> <i class="fa fa-facebook"></i>
+										</a>
+									</li>
+									<li>
+										<a href="#"> <i class="fa fa-twitter"></i>
+										</a>
+									</li>
+									<li>
+										<a href="#"> <i class="fa fa-linkedin"></i>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+</div>
+   </t>
+      </t>
+    </field>
+</record>
+</odoo>

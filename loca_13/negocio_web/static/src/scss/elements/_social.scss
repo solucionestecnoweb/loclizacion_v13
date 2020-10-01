@@ -1,0 +1,169 @@
+/* --------------------------------------------------------------------
+Social
+----------------------------------------------------------------------*/
+.social-icons{display:inline-block;}
+.social-icons ul{padding:0; margin:0;}
+.text-center.social-icons ul{display:inline-block;}
+.social-icons li{float:left; list-style:none; padding:0; margin:0 8px 0px 0;}
+.social-icons li:last-child{margin-right:0;}
+.social-icons li a{float:left; height:34px; width:34px; line-height:34px; font-size:16px; text-align: center; margin:0; border-radius: 4px; border: 0; background: transparent; color: #333; overflow: hidden; -webkit-transition: all .3s ease; -o-transition: all .3s ease; transition: all .3s ease; }
+.text-white .social-icons li a{color:#ffffff;}
+/* Size */
+.social-icons.large li a{height:42px; width:42px; line-height:42px; font-size:18px;}
+.social-icons.medium li a{height:30px; width:30px; line-height:30px; font-size:16px;}
+.social-icons.small li a{height:28px; width:28px; line-height:28px; font-size:14px;}
+/*Colored*/
+.social-icons.color a,
+.social-icons.color-hover a:hover{color:#fff; border:0;}
+.social-icons.color .social-rss a,
+.social-icons.color-hover .social-rss a:hover,
+.social-icons.effect-1 .social-rss a:hover:before, .social-icons.effect-2 .social-rss a:hover:before{background-color: #faa33d;}
+.social-icons.color .social-facebook a,
+.social-icons.color-hover .social-facebook a:hover,
+.social-icons.effect-1 .social-facebook a:hover:before, .social-icons.effect-2 .social-facebook a:hover:before{background-color:#5d82d1;}
+.social-icons.color .social-twitter a,
+.social-icons.color-hover .social-twitter a:hover,
+.social-icons.effect-1 .social-twitter a:hover:before, .social-icons.effect-2 .social-twitter a:hover:before{background-color:#40bff5;}
+.social-icons.color .social-vimeo a,
+.social-icons.color-hover .social-vimeo a:hover,
+.social-icons.effect-1 .social-vimeo a:hover:before, .social-icons.effect-2 .social-vimeo a:hover:before{background-color:#35c6ea;}
+.social-icons.color .social-myspace a,
+.social-icons.color-hover .social-myspace a:hover,
+.social-icons.effect-1 .social-myspace a:hover:before, .social-icons.effect-2 .social-myspace a:hover:before{background-color:#008dde;}
+.social-icons.color .social-youtube a,
+.social-icons.color-hover .social-youtube a:hover,
+.social-icons.effect-1 .social-youtube a:hover:before, .social-icons.effect-2 .social-youtube a:hover:before{background-color:#ef4e41;}
+.social-icons.color .social-instagram a,
+.social-icons.color-hover .social-instagram a:hover,
+.social-icons.effect-1 .social-instagram a:hover:before, .social-icons.effect-2 .social-instagram a:hover:before{background-color:#548bb6;}
+.social-icons.color .social-gplus a,
+.social-icons.color-hover .social-gplus a:hover,
+.social-icons.effect-1 .social-gplus a:hover:before, .social-icons.effect-2 .social-gplus a:hover:before{background-color:#d68400;}
+.social-icons.color .social-stumbleupon a,
+.social-icons.color-hover .social-stumbleupon a:hover,
+.social-icons.effect-1 .social-stumbleupon a:hover:before, .social-icons.effect-2 .social-stumbleupon a:hover:before{background-color:#ff5c30;}
+.social-icons.color .social-lastfm a,
+.social-icons.color-hover .social-lastfm a:hover,
+.social-icons.effect-1 .social-lastfm a:hover:before, .social-icons.effect-2 .social-lastfm a:hover:before{background-color:#f34320;}
+.social-icons.color .social-pinterest a,
+.social-icons.color-hover .social-pinterest a:hover,
+.social-icons.effect-1 .social-pinterest a:hover:before, .social-icons.effect-2 .social-pinterest a:hover:before{background-color:#e13138;}
+.social-icons.color .social-google a,
+.social-icons.color-hover .social-google a:hover,
+.social-icons.effect-1 .social-google a:hover:before, .social-icons.effect-2 .social-google a:hover:before{background-color:#eb5e4c;}
+.social-icons.color .social-evernote a,
+.social-icons.color-hover .social-evernote a:hover,
+.social-icons.effect-1 .social-evernote a:hover:before, .social-icons.effect-2 .social-evernote a:hover:before{background-color:#9acf4f;}
+.social-icons.color .social-dribbble a,
+.social-icons.color-hover .social-dribbble a:hover,
+.social-icons.effect-1 .social-dribbble a:hover:before, .social-icons.effect-2 .social-dribbble a:hover:before{background-color:#f7659c;}
+.social-icons.color .social-skype a,
+.social-icons.color-hover .social-skype a:hover,
+.social-icons.effect-1 .social-skype a:hover:before, .social-icons.effect-2 .social-skype a:hover:before{background-color:#13c1f3;}
+.social-icons.color .social-forrst a,
+.social-icons.color-hover .social-forrst a:hover,
+.social-icons.effect-1 .social-forrst a:hover:before, .social-icons.effect-2 .social-forrst a:hover:before{background-color:#45ad76;}
+.social-icons.color .social-linkedin a,
+.social-icons.color-hover .social-linkedin a:hover,
+.social-icons.effect-1 .social-linkedin a:hover:before, .social-icons.effect-2 .social-linkedin a:hover:before{background-color:#238cc8;}
+.social-icons.color .social-wordpress a,
+.social-icons.color-hover .social-wordpress a:hover,
+.social-icons.effect-1 .social-wordpress a:hover:before, .social-icons.effect-2 .social-wordpress a:hover:before{background-color:#2592c3;}
+.social-icons.color .social-grooveshark a,
+.social-icons.color-hover .social-grooveshark a:hover,
+.social-icons.effect-1 .social-grooveshark a:hover:before, .social-icons.effect-2 .social-grooveshark a:hover:before{background-color:#ffb21d;}
+.social-icons.color .social-delicious a,
+.social-icons.color-hover .social-delicious a:hover,
+.social-icons.effect-1 .social-delicious a:hover:before, .social-icons.effect-2 .social-delicious a:hover:before{background-color:#377bda;}
+.social-icons.color .social-behance a,
+.social-icons.color-hover .social-behance a:hover,
+.social-icons.effect-1 .social-behance a:hover:before, .social-icons.effect-2 .social-behance a:hover:before{background-color:#1879fd;}
+.social-icons.color .social-dropbox a,
+.social-icons.color-hover .social-dropbox a:hover,
+.social-icons.effect-1 .social-dropbox a:hover:before, .social-icons.effect-2 .social-dropbox a:hover:before{background-color:#17a3eb;}
+.social-icons.color .social-soundcloud a,
+.social-icons.color-hover .social-soundcloud a:hover,
+.social-icons.effect-1 .social-soundcloud a:hover:before, .social-icons.effect-2 .social-soundcloud a:hover:before{background-color:#ff7e30;}
+.social-icons.color .social-deviantart a,
+.social-icons.color-hover .social-deviantart a:hover,
+.social-icons.effect-1 .social-deviantart a:hover:before, .social-icons.effect-2 .social-deviantart a:hover:before{background-color:#6a8a7b;}
+.social-icons.color .social-yahoo a,
+.social-icons.color-hover .social-yahoo a:hover,
+.social-icons.effect-1 .social-yahoo a:hover:before, .social-icons.effect-2 .social-yahoo a:hover:before{background-color:#ab47ac;}
+.social-icons.color .social-flickr a,
+.social-icons.color-hover .social-flickr a:hover,
+.social-icons.effect-1 .social-flickr a:hover:before, .social-icons.effect-2 .social-flickr a:hover:before{background-color:#ff48a3;}
+.social-icons.color .social-digg a,
+.social-icons.color-hover .social-digg a:hover,
+.social-icons.effect-1 .social-digg a:hover:before, .social-icons.effect-2 .social-digg a:hover:before{background-color:#75788d;}
+.social-icons.color .social-blogger a,
+.social-icons.color-hover .social-blogger a:hover,
+.social-icons.effect-1 .social-blogger a:hover:before, .social-icons.effect-2 .social-blogger a:hover:before{background-color:#ff9233;}
+.social-icons.color .social-tumblr a,
+.social-icons.color-hover .social-tumblr a:hover,
+.social-icons.effect-1 .social-tumblr a:hover:before, .social-icons.effect-2 .social-tumblr a:hover:before{background-color:#426d9b;}
+.social-icons.color .social-quora a,
+.social-icons.color-hover .social-quora a:hover,
+.social-icons.effect-1 .social-quora a:hover:before, .social-icons.effect-2 .social-quora a:hover:before{background-color:#ea3d23;}
+.social-icons.color .social-github a,
+.social-icons.color-hover .social-github a:hover,
+.social-icons.effect-1 .social-github a:hover:before, .social-icons.effect-2 .social-github a:hover:before{background-color:#3f91cb;}
+.social-icons.color .social-amazon a,
+.social-icons.color-hover .social-amazon a:hover,
+.social-icons.effect-1 .social-amazon a:hover:before, .social-icons.effect-2 .social-amazon a:hover:before{background-color:#ff8e2e;}
+.social-icons.color .social-xing a,
+.social-icons.color-hover .social-xing a:hover,
+.social-icons.effect-1 .social-xing a:hover:before, .social-icons.effect-2 .social-xing a:hover:before{background-color:#1a8e8c;}
+.social-icons.color .social-wikipedia a,
+.social-icons.color-hover .social-wikipedia a:hover,
+.social-icons.effect-1 .social-wikipedia a:hover:before, .social-icons.effect-2 .social-wikipedia a:hover:before{background-color:#b3b5b8;}
+.social-icons.color .social-android a,
+.social-icons.color-hover .social-android a:hover,
+.social-icons.effect-1 .social-android a:hover:before, .social-icons.effect-2 .social-android a:hover:before{background-color:#A4C639;}
+.social-icons.color .social-apple a,
+.social-icons.color-hover .social-apple a:hover,
+.social-icons.effect-1 .social-apple a:hover:before, .social-icons.effect-2 .social-apple a:hover:before{background-color:#999999;}
+
+/* Border */
+.social-icons.border li a{border:1px solid #eee;   background:transparent;}
+
+/* Dark */
+.social-icons.social-icons-dark li a{background:$as-light3; color:#fff;}
+
+/* Light */
+.social-icons.light li a{background:#fff; color:#333; border:1px solid #eee;}
+
+/* Rounded */
+.social-icons.rounded li a{-webkit-border-radius:50%; -moz-border-radius:50%; border-radius:50%;}
+
+/* Large Size */
+.social-icons.social-icons-large li a{height:50px; width:50px; line-height:50px; font-size:18px; margin:0 10px 10px 0;}
+.social-icons.animated li:hover i{-webkit-animation: toTopFromBottom 0.3s forwards; -moz-animation: toTopFromBottom 0.3s forwards; animation: toTopFromBottom 0.3s forwards;}
+
+/* Effect-1 */
+.social-icons li{margin:0 8px 8px 0;}
+.social-icons li:last-child { margin-right: 0px; }
+.social-icons.effect-1 li a{height:40px; width:40px; line-height:40px; font-size:16px; position:relative; overflow:visible;}
+.social-icons.effect-1 li a:hover{background-color:transparent; color:#ffffff; border:1px solid transparent;}
+.social-icons.effect-1 li a:before{content:""; background-color:#000000; position:absolute; width:100%; height:100%; left:0; top:0; -webkit-transition: all .3s ease; -o-transition: all .3s ease; transition: all .3s ease; -moz-transform:scale(1.2); -webkit-transform: scale(1.2); transform: scale(1.2); opacity:0; -webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px;}
+.social-icons.effect-1 li a:hover:before{opacity:1; -moz-transform:scale(1.0); -webkit-transform: scale(1.0); transform: scale(1.0);}
+.social-icons.effect-1 li a:hover i{color:#ffffff; position:relative; z-index:0;}
+.social-icons.large.effect-1 li a, .social-icons.large.effect-2 li a{height:50px; width:50px; line-height:50px; font-size:18px;}
+.social-icons.medium.effect-1 li a, .social-icons.medium.effect-2 li a{height:40px; width:40px; line-height:40px; font-size:16px;}
+.social-icons.small.effect-1 li a, .social-icons.small.effect-2 li a{height:30px; width:30px; line-height:30px; font-size:14px;}
+
+/* Effect-2 */
+.social-icons.effect-2 li{margin:0 5px 5px 0;}
+.social-icons.effect-2 li a{height:40px; width:40px; line-height:40px; font-size:16px; position:relative; overflow:visible;}
+.social-icons.effect-2 li a:hover{background-color:transparent; color:#ffffff; -moz-transform:scale(1.1); -webkit-transform: scale(1.1); transform: scale(1.1); border:1px solid transparent;}
+.social-icons.effect-2 li a:before{content:""; background-color:#000000; position:absolute; width:100%; height:100%; left:0; top:0; -webkit-transition: all .3s ease; -o-transition: all .3s ease; transition: all .3s ease; -moz-transform:scale(0.5); -webkit-transform: scale(0.5); transform: scale(0.5); opacity:0; -webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px;}
+.social-icons.effect-2 li a:hover:before{opacity:1; -moz-transform:scale(1.0); -webkit-transform: scale(1.0); transform: scale(1.0);}
+.social-icons.effect-2 li a:hover i{color:#ffffff; position:relative; z-index:0;}
+.social-icons.rounded li a:before{-webkit-border-radius:50%; -moz-border-radius:50%; border-radius:50%;}
+.social-icons.transpernt.border li a{color:#959595; border-color:#757575;}
+.social-icons.transpernt.border li a:hover{border:1px solid transparent;}
+@keyframes toTopFromBottom {
+49% {transform: translateY(-100%);}
+50% {opacity: 0; transform: translateY(100%);}
+51% {opacity: 1;}
+}

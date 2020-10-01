@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <template id="assets_theme" inherit_id="website.assets_frontend">
+            <xpath expr="." position="inside">
+
+               <link href="/negocio_web/static/src/scss/as_variables.scss" rel="stylesheet" type="text/scss"/> 
+			         <link href="/negocio_web/static/src/scss/theme_option/colors/color_picker.scss" rel="stylesheet" type="text/scss"/> 
+               <link href="/negocio_web/static/src/scss/theme_option/colors/color_picker_secondary.scss" rel="stylesheet" type="text/scss"/>
+               <link href="/negocio_web/static/src/scss/theme_option/colors/color_picker_third.scss" rel="stylesheet" type="text/scss"/>
+               <link href="/negocio_web/static/src/scss/theme_option/colors/color_picker_extra.scss" rel="stylesheet" type="text/scss"/>
+            	 <link href="/negocio_web/static/src/scss/owl.carousel.scss" rel="stylesheet" type="text/scss"/>
+	             <link href="/negocio_web/static/src/scss/website_product_carousel.scss" rel="stylesheet" type="text/scss"/>
+	            
+	           
+                <!--============================================= Style =============================================-->
+
+
+                <link href="/negocio_web/static/src/scss/header.scss" rel="stylesheet" type="text/scss"/>          
+                <link href="/negocio_web/static/src/scss/footer.scss" rel="stylesheet" type="text/scss"/>
+                <link href="/negocio_web/static/src/scss/as_base.scss" rel="stylesheet" type="text/scss"/>      
+                <link href="/negocio_web/static/src/scss/as_shortcodes.scss" rel="stylesheet" type="text/scss"/>     
+                <link href="/negocio_web/static/src/scss/as_blog_product.scss" rel="stylesheet" type="text/scss"/>                  
+                <link href="/negocio_web/static/src/scss/customize_modal.scss" rel="stylesheet" type="text/scss"/>                  
+                <link href="/negocio_web/static/src/css/magnific-popup.css" rel="stylesheet"/>                           
+                <link href="/negocio_web/static/src/plugins/owl-carousel/owl.carousel.scss" type="text/scss"/>
+                <link href="/negocio_web/static/src/plugins/owl-carousel/owl.theme.scss" type="text/scss"/>
+                <link href="/negocio_web/static/src/plugins/jquery.mCustomScrollbar.scss" type="text/scss"/>
+                <link href="/negocio_web/static/src/plugins/countdown/jquery.countdown.scss" type="text/scss" />
+                <link href="/negocio_web/static/src/scss/responsive.scss" rel="stylesheet" type="text/scss"/>
+                <link href="/negocio_web/static/src/scss/demo.scss" rel="stylesheet" type="text/scss"/>
+                <!-- added by MK--> 
+                <link href="/negocio_web/static/src/scss/normalize.scss" rel="stylesheet" type="text/scss"/> 
+                <link href="/negocio_web/static/src/scss/ion.rangeSlider.scss" rel="stylesheet" type="text/scss"/> 
+        	      <link href="/negocio_web/static/src/scss/ion.rangeSlider.skinFlat.scss" rel="stylesheet" type="text/scss"/> 
+
+
+
+
+                <!--============================================= Javascript ========================================-->
+                <script type="text/javascript" src="/negocio_web/static/src/js/owl.carousel.js"/>
+                <script type="text/javascript" src="/negocio_web/static/src/js/jquery.appear.js"></script>
+                <script type="text/javascript" src="/negocio_web/static/src/plugins/owl-carousel/owl.carousel.min.js"></script>
+                <script type="text/javascript" src="/negocio_web/static/src/plugins/owl-carousel/OwlCarousel2Thumbs.min.js"></script>
+                <script  type="text/javascript" src="/negocio_web/static/src/plugins/jquery.mCustomScrollbar.concat.min.js"></script>
+                <script  type="text/javascript" src="/negocio_web/static/src/plugins/sticky-kit.min.js"></script> 
+                <script type="text/javascript" src="/negocio_web/static/src/plugins/counter/jquery.countTo.js"></script>
+                <script  type="text/javascript" src="/negocio_web/static/src/plugins/countdown/jquery.countdown.js"></script> 
+                <script  type="text/javascript" src="/negocio_web/static/src/plugins/magnific-popup/jquery.magnific-popup.min.js"></script> 
+               	<!-- added by MK--> 
+                 <script type="text/javascript" src="/negocio_web/static/src/plugins/slider/ion.rangeSlider.js"></script>
+                <script type="text/javascript" src="/negocio_web/static/src/js/custom.js"></script> 
+             
+
+            </xpath>
+        </template>
+</odoo>
