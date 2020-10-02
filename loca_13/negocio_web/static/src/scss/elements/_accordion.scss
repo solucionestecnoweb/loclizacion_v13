@@ -1,0 +1,37 @@
+/*---------------------------------------------------------------------
+Accordion
+----------------------------------------------------------------------*/
+.accordion{margin-bottom:0;}
+.accordion.default .panel-default{margin-bottom:10px;}
+.accordion.default .panel-default:last-child { margin-bottom: 0px; }
+.accordion .panel + .panel {margin-top: 8px;}
+.accordion .panel-default > .panel-heading a{font-weight: 300; text-decoration: none;}
+
+/* Accordion Shadow */
+.accordion  .panel + .panel {margin-top: 12px;}
+.accordion .panel-default{border: none; box-shadow: none; background: none;}
+.accordion .panel-default > .panel-heading{color:#323232; background-color:inherit;  border:none; padding: 0;}
+.accordion .panel-default > .panel-heading a{background: $as-theme; border-color: transparent; padding: 18px 20px; display: block; color: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.25); border-radius: 50px; position: relative; letter-spacing: 0;}
+.accordion .panel-default > .panel-heading a.collapsed{background: #ffffff; color: $as-light3; box-shadow:none; border:1px solid #e8e8e8;}
+.accordion .panel-default > .panel-heading:hover a.collapsed{background: #f7fbff;}
+.accordion .panel-default > .panel-heading a i{padding-right: 10px;}
+.accordion .panel-default > .panel-heading + .panel-collapse > .panel-body{border:none; padding:15px; padding-top: 15px; padding-bottom: 15px;}
+
+/* Accordion Boxed */
+.accordion.boxed .panel-default{border: none; box-shadow: none;}
+.accordion.boxed .panel-default > .panel-heading a{background: #3c3e52; color: #ffffff; border-radius: 5px;}
+.accordion.boxed .panel-default > .panel-heading a.collapsed{background: #ffffff; color: $as-light3;}
+.accordion.boxed .panel-default > .panel-heading:hover a.collapsed{background: #f7fbff;}
+.accordion.boxed .panel-default > .panel-heading a i{position:absolute; right:15px; top:18px; padding-right: 0; font-size: 18px;}
+.accordion.boxed .panel-default > .panel-heading + .panel-collapse > .panel-body{border:none; padding: 0; padding-top: 15px; padding-bottom: 15px;}
+
+/* Accordion Border Bottom */
+.accordion.bottom-border .panel-default > .panel-heading a{background: transparent; border: none; border-bottom: 3px solid $as-theme; color: $as-theme; box-shadow: none; padding: 18px 0px; border-radius: 0;}
+.accordion.bottom-border .panel-default > .panel-heading a.collapsed{background: transparent; border: none; border-bottom: 3px solid #e8e8e8; color: #959595;}
+.accordion.bottom-border .panel-default > .panel-heading:hover a.collapsed{background: transparent; color: $as-theme;}
+
+/* Accordion Border */
+.accordion.border .panel-default > .panel-heading a{border-radius: 5px; background: transparent; color: $as-theme; border: 1px solid $as-theme; box-shadow: none;}
+.accordion.border .panel-default > .panel-heading a.collapsed{color: #959595; border-color: #e8e8e8;}
+.accordion.border .panel-default > .panel-heading:hover a.collapsed{background: transparent; color: $as-theme;}
+.accordion.border .panel-default > .panel-heading a i{color: $as-theme;}

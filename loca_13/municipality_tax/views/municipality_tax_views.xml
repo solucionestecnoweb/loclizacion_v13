@@ -69,12 +69,12 @@
         <field name="arch" type="xml">
             <tree string="Municipality Tax">
                 <field name="name"/>
-                <field name="invoice_number" string="Número de Factura"/>
+                <field name="invoice_id"/>
                 <field name="type" string="Tipo"/>
                 <!--field name="rif"/-->
                 <field name="partner_id"/>
-                <field name="withheld_amount" string="Importe" sum="withheld_amount"/>
-                <field name="amount" string="Importe Retenido" sum="amount"/>
+                <field name="withheld_amount" string="Importe"/>
+                <field name="amount" string="Importe Retenido"/>
                 <field name="transaction_date"/>
                 
             </tree>

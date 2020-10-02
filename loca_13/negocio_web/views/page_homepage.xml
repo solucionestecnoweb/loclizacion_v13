@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<record id="home_homepage_record3" model="website.page">
+<field name="name">Home Home Page</field>
+<field name="url">/home-homepage</field>
+<field name="type">qweb</field>
+<field name="key">comercio_web.home_homepage</field>
+<field name="website_published">True</field>
+<field name="arch" type="xml">
+<t t-name="comercio_web.home_homepage_template">
+<t t-call="website.layout">
+	 <div id="wrap" class="oe_structure">
+            <section class="as-animated-slider">
+        <div id="carousel-1" class="carousel slide banner indicators-right" data-ride="carousel" data-arrow="none">
+          <ol class="carousel-indicators control-number">
+            <li data-target="#carousel-1" data-slide-to="0">01</li>
+            <li data-target="#carousel-1" data-slide-to="1">02</li>
+            <li data-target="#carousel-1" data-slide-to="2" class="active">03</li>
+          </ol>
+          <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active" style="background-color: #faf7ee">
+              <div class="slide-item">
+                <div class="slider-text">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="tagline line">New collection 2018</div>
+                        <h2 class="title-medium">Behind the desert <br/>Gifts for girls </h2>
+                        <a href="#" class="btn btn-link btn-sm dark-bg">SHOP NOW</a>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="top-img">
+                          <img src="/comercio_web/static/src/img/slider/banner-01.png" alt=""/>
+                        </div>
+                        <div class="pallarax-move" style="transform: translate(0.89998px, -1.89999px) scale(1.1);">
+                          <img class="up-down-animation" src="/comercio_web/static/src/img/slider/shop.png" alt=""/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item" style="background-color: #e9f0f1">
+              <div class="slide-item">
+                <div class="slider-text">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="tagline line">New collection 2018</div>
+                        <h2 class="title-medium">Behind the desert <br/>Gifts for girls </h2>
+                        <a href="#" class="btn btn-link btn-sm dark-bg">SHOP NOW</a>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="top-img">
+                          <img class="img-fluid" src="/comercio_web/static/src/img/slider/banner-02.png" alt=""/>
+                        </div>
+                        <div class="pallarax-move" style="transform: translate(0.89998px, -1.89999px) scale(1.1);">
+                          <img class="up-down-animation" src="/comercio_web/static/src/img/slider/effect-2.png" alt=""/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item" style="background-color: #ecdfcf">
+              <div class="slide-item">
+                <div class="slider-text">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="tagline line">New collection 2018</div>
+                        <h2 class="title-medium">Behind the desert <br/>Gifts for girls </h2>
+                        <a href="#" class="btn btn-link btn-sm dark-bg">SHOP NOW</a>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="top-img">
+                          <img src="/comercio_web/static/src/img/slider/banner-03.png" alt=""/>
+                        </div>
+                        <div class="pallarax-move" style="transform: translate(0.89998px, -1.89999px) scale(1.1);">
+                          <img class="up-down-animation" src="/comercio_web/static/src/img/slider/shop.png" alt=""/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section-md pb-0 shop-full-width">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="shop-banner mb-3">
+                <div class="banner-images">
+                  <div class="banner-img">
+                    <img class="img-fluid" src="/comercio_web/static/src/img/category-banner/men.jpg" alt=""/>
+                  </div>
+                </div>
+                <div class="banner-info info-style1">
+                  <a class="link f-weight-400" href="#">Men</a>
+                  <label class="count f-weight-400">12</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="shop-banner mb-3">
+                <div class="banner-images">
+                  <div class="banner-img">
+                    <img class="img-fluid" src="/comercio_web/static/src/img/category-banner/shoes.jpg" alt=""/>
+                  </div>
+                </div>
+                <div class="banner-info info-style1">
+                  <a class="link f-weight-400" href="#">Shoes</a>
+                  <label class="count f-weight-400">8</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="shop-banner mb-3">
+                <div class="banner-images">
+                  <div class="banner-img">
+                    <img class="img-fluid" src="/comercio_web/static/src/img/category-banner/lookbook.jpg" alt=""/>
+                  </div>
+                </div>
+                <div class="banner-info info-style1">
+                  <a class="link f-weight-400" href="#">Lookbook</a>
+                  <label class="count f-weight-400">6</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="tqt-products-slider">
+        <div class="tqt_products_slider" data-product-count="0" data-slider-type="style-1" data-tab-id="1">
+          <div class="slider-wrapper">
+            <div class="seaction-head">
+              <h1>Product Slider</h1>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="p-0" style="display:none; background-image: url(/comercio_web/static/src/img/ads-banner/ads3.jpg); background-position: center right; background-repeat: no-repeat; background-size: cover;">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 offset-md-5">
+              <div class="shop-banner-full" style="height: 700px;">
+                <div class="align-m">
+                  <label class="shop-lable l-space-5 f-weight-400 text-uppercase">New arrivals</label>
+                  <h2 class="title-lg f-weight-600 mb-1">Deal of the day</h2>
+                  <h5 class="title-xs">Spring collections 2018</h5>
+                  <div class="countdown" data-countdown="nov 30, 2018 12:00:00">clock</div>
+                  <a class="shop-btn link-sm l-space-2 f-weight-400 text-uppercase" href="#">Shop Collection</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section-xs" style=" background-image: url(/comercio_web/static/src/img/ads-banner/countdown-banner1.jpg); background-position: center center; background-repeat: no-repeat; background-size: cover;">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 offset-sm-3 text-center">
+              <div class="shop-banner-full sm-pl-5 xs-pl-4" style="height: 500px;">
+                <div class="align-m">
+                  
+                  <h2 class="title-md f-weight-600 mb-1">Deal of the day</h2>
+                  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur cing elit. Suspe ndisse suscipit sagittis leo sit met condimentum estibulum issim</p>
+                  <div class="btn-block"><div style="display: inline-block;"><div class="countdown style2" data-countdown="sep 30, 2019 12:00:00">clock</div></div></div>
+                  <a class="shop-btn link-sm l-space-2 f-weight-400 text-uppercase" href="#">Shop Now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+</section>
+      <section class="section-sm as-latest-blog web_blog_slider" data-blog-id="0" data-blog_list-id="1">
+        <div class="seaction-head">
+          <h2>Blog SLider</h2>
+        </div>
+      </section>
+      <section class="section-xs pb-2" style="border-top: 1px solid #e8e8e8;"><div class="container"><div class="row">
+  <div class="col-md-3">
+    <div class="feature-icon-box mb-3">
+      <div class="feature-icon"><img class="img-fluid" style="display: inline;" src="comercio_web/static/src/img/box-icon1.png" alt=""/></div>
+      <div class="feature-info">
+        <h6 class="title l-space-1 text-uppercase f-weight-600">Free Shipping</h6>
+        <p>All order over $100</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="feature-icon-box mb-3">
+      <div class="feature-icon"><img class="img-fluid" style="display: inline;" src="comercio_web/static/src/img/box-icon2.png" alt=""/></div>
+      <div class="feature-info">
+        <h6 class="title l-space-1 text-uppercase f-weight-600">Free Returns</h6>
+        <p>Simply Returns 30 Days</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="feature-icon-box mb-3">
+      <div class="feature-icon"><img class="img-fluid" style="display: inline;" src="comercio_web/static/src/img/box-icon3.png" alt=""/></div>
+      <div class="feature-info">
+        <h6 class="title l-space-1 text-uppercase f-weight-600">Secure Payment</h6>
+        <p>100% Secure Payment</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="feature-icon-box mb-3">
+      <div class="feature-icon"><img class="img-fluid" style="display: inline;" src="comercio_web/static/src/img/box-icon4.png" alt=""/></div>
+      <div class="feature-info">
+        <h6 class="title l-space-1 text-uppercase f-weight-600">24x7 Support</h6>
+        <p>24 Hours a Day</p>
+      </div>
+    </div>
+  </div>
+</div></div></section>
+    <section class="section-sm pb-4" style="display: none; border-top: 1px solid #e7e7e7">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="feature-box text-center mb-3">
+                <div class="feature-info">
+                  <h6 class="title mb-1 l-space-1 text-uppercase f-weight-600">Free Shipping</h6>
+                  <p>On all orders over $75.00</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="feature-box text-center mb-3">
+                <div class="feature-info">
+                  <h6 class="title mb-1 l-space-1 text-uppercase f-weight-600">Free Returns</h6>
+                  <p>30 days money back guarantee</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="feature-box text-center mb-3">
+                <div class="feature-info">
+                  <h6 class="title mb-1 l-space-1 text-uppercase f-weight-600">Money Back</h6>
+                  <p>If the item didn't suit you</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+</t>
+</t>
+</field>
+</record>
+</odoo>

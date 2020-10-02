@@ -15,7 +15,7 @@ class Partner(models.Model):
 
 
 
-    """def copy(self, default=None):
+    def copy(self, default=None):
 
         if default is None:
             default = {}
@@ -27,4 +27,4 @@ class Partner(models.Model):
                 #'islr_historical_data': []
             })
 
-        return super().copy(default)"""
+        return super().copy(default)

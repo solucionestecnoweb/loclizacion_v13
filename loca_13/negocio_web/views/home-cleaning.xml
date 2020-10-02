@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<record id="home_cleaning" model="website.page">
+<field name="name">Home Cleaning</field>
+<field name="url">/home-cleaning</field>
+<field name="type">qweb</field>
+<field name="key">negocio_web.home_cleaning</field>
+<field name="website_published">True</field>
+<field name="arch" type="xml">
+<t t-name="negocio_web.home_cleaning_template">
+<t t-call="website.layout">
+  <div id="wrap" class="oe_structure oe_empty">
+                  <section id="negocio_slider" class="carousel s_carousel s_carousel_default s_carousel_alan slide main-half-slider" data-ride="carousel">
+	<ol class="carousel-indicators">
+		<li data-target="#negocio_slider" data-slide-to="0" class="active"></li>
+		<li data-target="#negocio_slider" data-slide-to="1" class=""></li>
+	</ol>
+	<div class="carousel-inner">
+		<div class="carousel-item bg active" style="background-image: url('/negocio_web/static/src/img/cleaning/slider-01.jpg');">
+			<div class="container">
+				<div class="row slider align-items-center slider">
+					<div class="col-lg-6">
+						<div class="banner-text">
+							<div class="banner-tagline">Quality cleaning at a fair price.</div>
+							<h2 class="banner-title sm fw-600">State of the art <br/>cleaning techniques</h2> 
+							<div class="button-group"> <a href="#" class="btn btn-primary">Read more</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="carousel-item bg" style="background-image: url('/negocio_web/static/src/img/cleaning/slider-02.jpg');">
+			<div class="container">
+				<div class="row slider align-items-center slider">
+					<div class="col-lg-6">
+						<div class="banner-text">
+							<div class="banner-tagline">Quality cleaning at a fair price.</div>
+							<h2 class="banner-title sm fw-600">State of the art <br/>cleaning techniques</h2> 
+							<div class="button-group"> <a href="#" class="btn btn-primary">Read more</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section-xs theme-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="feature-box f-small d-flex">
+					<div class="feature-icon pr-3 mb-0"> <span class="icon">
+                    <i class="fa fa-mobile"></i>
+                  </span>
+					</div>
+					<div class="feature-info align-self-center">
+						<h4 class="title f-weight-700 mb-0">Opening hours<br/>Mon - Fri: 08:00 - 20:00</h4> 
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="feature-box f-small d-flex">
+					<div class="feature-icon pr-3 mb-0"> <span class="icon">
+                    <i class="fa fa-map-o"></i>
+                  </span>
+					</div>
+					<div class="feature-info align-self-center">
+						<h4 class="title f-weight-700 mb-0">Where you can find us<br/>49 Grand Street, Los Angeles</h4> 
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="feature-box f-small d-flex">
+					<div class="feature-icon pr-3 mb-0"> <span class="icon">
+                    <i class="fa fa-headphones"></i>
+                  </span>
+					</div>
+					<div class="feature-info align-self-center">
+						<h4 class="title f-weight-700 mb-0">Get in touch<br/>(222) 400-645</h4> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section-md">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-lg-5  align-self-center">
+				<div class="section-title mb-0">
+					<h2 class="f-weight-700">We'll make your home sparkle</h2>
+					<p>Integer feugiat scelerisque varius morbi enim nunc
+						<br/>faucibus. Ac felis donec et odio.</p>
+				</div>
+				<div class="row mb-4">
+					<div class="col-md-6">
+						<ul class="list arrow">
+							<li>Vetted professionals</li>
+							<li>Next day availability</li>
+							<li>Manage everything online</li>
+						</ul>
+					</div>
+					<div class="col-md-6">
+						<ul class="list arrow">
+							<li>Standard cleaning tasks</li>
+							<li>Specialized services</li>
+							<li>Only the best quality</li>
+						</ul>
+					</div>
+				</div> <a href="#" class="btn btn-primary">READMORE</a>
+			</div>
+			<div class="col-md-6  offset-lg-1 xs-mt-4">
+				<img src="/negocio_web/static/src/img/cleaning/img-01.jpg" class="img-shadow" alt="" />
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section-md grey-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3 text-center">
+				<div class="section-title">
+					<h2 class="f-weight-700">Complete cleaning services</h2>
+					<p>Aliquam malesuada bibendum arcu vitae elementum curabitur vitae ven. Pellentesque pulvinar elementum habitant morbi tristique.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card card-shadow">
+					<img class="card-img-top" src="/negocio_web/static/src/img/cleaning/service-01.jpg" alt="Service" />
+					<div class="card-body">
+						<h5 class="card-title fw-500">General office cleaning</h5>
+						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> <a href="#" class="btn btn-outline-primary">READMORE</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card card-shadow">
+					<img class="card-img-top" src="/negocio_web/static/src/img/cleaning/service-02.jpg" alt="Service" />
+					<div class="card-body">
+						<h5 class="card-title fw-500">Post renovation service</h5>
+						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> <a href="#" class="btn btn-outline-primary">READMORE</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card card-shadow">
+					<img class="card-img-top" src="/negocio_web/static/src/img/cleaning/service-03.jpg" alt="Service" />
+					<div class="card-body">
+						<h5 class="card-title fw-500">Spring cleaning</h5>
+						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> <a href="#" class="btn btn-outline-primary">READMORE</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="grey-bg xs-mb-4">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 text-center">
+				<img src="/negocio_web/static/src/img/cleaning/img-02.jpg" alt="" />
+			</div>
+			<div class="col-md-5 offset-sm-1 align-self-center">
+				<div class="section-title">
+					<h2 class="f-weight-700">State of the art cleaning techniques according to industry best practices.</h2>
+					<p>Tristique senectus et netus et malesuada fames ac turpis.
+						<br/>Pharetra sit amet aliquam id diam maecenas ultricies.</p>
+				</div> <a href="#" class="btn btn-outline-primary">READMORE</a>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section-md overlay pos-r" data-overlay-color="dark" data-overlay="5" style="background: url('/negocio_web/static/src/img/cleaning/bg-01.jpg') no-repeat 0 0; background-size: cover;">
+	<div class="container">
+		<div class="section-wrap mrg-m-150">
+			<div class="section-left-pad-small">
+				<div class="row align-items-center">
+					<div class="col-md-6">
+						<div class="section-title mb-0">
+							<h3 class="f-weight-700 mb-1">Get a free cleaning estimate</h3>
+							<p class="mb-0">Tristique senectus et netus et malesuada fames ac turpis.
+								<br/>Pharetra sit amet aliquam id diam maecenas ultricies.</p>
+						</div>
+					</div>
+					<div class="col-md-6 text-right"> <a href="#" class="btn btn-primary">Get Started</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container mt-7">
+		<div class="row">
+			<div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-center white-text">
+				<div class="section-title">
+					<h6 class="f-weight-600">State of the art cleaning techniques.</h6>
+					<h2 class="f-weight-700">Housekeeping and house cleaning pricing plans</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="grey-bg">
+	<div class="container">
+		<div class="row no-gutters align-items-center mrg-m-80">
+			<div class="col-md-4">
+				<div class="pricing-table">
+					<div class="pricing-table-header">
+						<p class="pricing"><span>$</span>49</p>
+						<div class="package">Weekly Package</div>
+						<h3 class="plan-name">Startup</h3>
+					</div>
+					<div class="pricing-table-body">
+						<ul>
+							<li>Marketing strategy <i class="fa fa-check"></i>
+							</li>
+							<li>Exclusive Support <i class="fa fa-check"></i>
+							</li>
+							<li>PreBuilt Websites <i class="fa fa-check"></i>
+							</li>
+							<li>Premium Plugins <i class="fa fa-check"></i>
+							</li>
+						</ul>
+					</div>
+					<div class="pricing-table-footer"> <a href="#" class="btn btn-outline-primary">Get Started</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 xs-mt-4">
+				<div class="pricing-table pricing-active">
+					<div class="pricing-table-header">
+						<p class="pricing"><span>$</span>89</p>
+						<div class="package">Monthly Package</div>
+						<h3 class="plan-name">Professional</h3>
+					</div>
+					<div class="pricing-table-body">
+						<ul>
+							<li>Marketing strategy <i class="fa fa-check"></i>
+							</li>
+							<li>Exclusive Support <i class="fa fa-check"></i>
+							</li>
+							<li>PreBuilt Websites <i class="fa fa-check"></i>
+							</li>
+							<li>Premium Plugins <i class="fa fa-check"></i>
+							</li>
+						</ul>
+					</div>
+					<div class="pricing-table-footer"> <a href="#" class="btn btn-primary">Get Started</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 xs-mt-4">
+				<div class="pricing-table">
+					<div class="pricing-table-header">
+						<p class="pricing"><span>$</span>98</p>
+						<div class="package">Weekly Package</div>
+						<h3 class="plan-name">Entreprise</h3>
+					</div>
+					<div class="pricing-table-body">
+						<ul>
+							<li>Marketing strategy <i class="fa fa-check"></i>
+							</li>
+							<li>Exclusive Support <i class="fa fa-check"></i>
+							</li>
+							<li>PreBuilt Websites <i class="fa fa-check"></i>
+							</li>
+							<li>Premium Plugins <i class="fa fa-check"></i>
+							</li>
+						</ul>
+					</div>
+					<div class="pricing-table-footer"> <a href="#" class="btn btn-outline-primary">Get Started</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section-md grey-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3 text-center">
+				<div class="section-title">
+					<h2 class="f-weight-700">Hear from our customers</h2>
+					<p>We are very proud of the service we provide and stand by every product we carry. Read our testimonials from our happy customers.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 offset-sm-2">
+				<div class="testimonail-slider testimonail-style3">
+					<div id="testimonail-slider3" class="carousel slide" data-ride="carousel">
+						<div class="carousel-inner">
+							<div class="carousel-item active" data-interval="10000">
+								<div class="testimonail d-flex">
+									<div class="testimonail-wrap">
+										<div class="author-description">"Sed efficitur dapibus porta. Nulla porta, velit eget porttitor aliquam, tellus tellus pharetra mi, nec efficitur enim ex adipiscing euismod urna consectetur"</div>
+										<div class="author-info clearfix">
+											<div class="name-info">
+												<h6 class="name">Rashed kabir</h6>
+												<span>Designer</span>
+											</div>
+										</div>
+									</div>
+									<div class="testimonail-img">
+										<img src="/negocio_web/static/src/img/team1-1.jpg" alt="" />
+									</div>
+								</div>
+							</div>
+							<div class="carousel-item" data-interval="10000">
+								<div class="testimonail d-flex">
+									<div class="testimonail-wrap">
+										<div class="author-description">"Sed efficitur dapibus porta. Nulla porta, velit eget porttitor aliquam, tellus tellus pharetra mi, nec efficitur enim ex adipiscing euismod urna consectetur"</div>
+										<div class="author-info clearfix">
+											<div class="name-info">
+												<h6 class="name">Rashed kabir</h6>
+												<span>Designer</span>
+											</div>
+										</div>
+									</div>
+									<div class="testimonail-img">
+										<img src="/negocio_web/static/src/img/team1-3.jpg" alt="" />
+									</div>
+								</div>
+							</div>
+							<div class="carousel-item" data-interval="10000">
+								<div class="testimonail d-flex">
+									<div class="testimonail-wrap">
+										<div class="author-description">"Sed efficitur dapibus porta. Nulla porta, velit eget porttitor aliquam, tellus tellus pharetra mi, nec efficitur enim ex adipiscing euismod urna consectetur"</div>
+										<div class="author-info clearfix">
+											<div class="name-info">
+												<h6 class="name">Rashed kabir</h6>
+												<span>Designer</span>
+											</div>
+										</div>
+									</div>
+									<div class="testimonail-img">
+										<img src="/negocio_web/static/src/img/team2.jpg" alt="" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<ol class="carousel-indicators">
+							<li data-target="#testimonail-slider3" data-slide-to="0" class="active"></li>
+							<li data-target="#testimonail-slider3" data-slide-to="1" class=""></li>
+							<li data-target="#testimonail-slider3" data-slide-to="2" class=""></li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section-xs">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="d-flex justify-content-around">
+					<div class="text-center">
+						<img src="/negocio_web/static/src/img/logo1.png" alt="" />
+					</div>
+					<div class="text-center">
+						<img src="/negocio_web/static/src/img/logo2.png" alt="" />
+					</div>
+					<div class="text-center">
+						<img src="/negocio_web/static/src/img/logo3.png" alt="" />
+					</div>
+					<div class="text-center">
+						<img src="/negocio_web/static/src/img/logo4.png" alt="" />
+					</div>
+					<div class="text-center">
+						<img src="/negocio_web/static/src/img/logo5.png" alt="" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section-lg" style="background: url('/negocio_web/static/src/img/cleaning/slider-01.jpg') no-repeat 0 0; background-size: cover;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9 col-lg-5">
+				<div class="section-title">
+					<h2 class="f-weight-700">Discover the perfect balance<br/>of harmony and comfort.</h2>
+					<p>Amet dictum sit amet justo donec enim diam vulputate. Vitae suscipit tellus mauris a diam maecenas sed enim ut.</p>
+				</div>
+				<div class="row mt-3">
+					<div class="col-md-4">
+						<div class="feature-box with-bg f-center f-small">
+							<div class="feature-icon"> <span class="icon">
+                        <i class="fa fa-mobile-phone"></i>
+                      </span>
+							</div>
+							<div class="feature-info">
+								<h4 class="title">Phone</h4>
+								<p>(222) 400-630</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="feature-box with-bg f-center f-small">
+							<div class="feature-icon"> <span class="icon">
+                        <i class="fa fa-envelope-o"></i>
+                      </span>
+							</div>
+							<div class="feature-info">
+								<h4 class="title">Email</h4>
+								<p>contact@mail.com</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="feature-box with-bg f-center f-small">
+							<div class="feature-icon"> <span class="icon">
+                        <i class="fa fa-calendar"></i>
+                      </span>
+							</div>
+							<div class="feature-info">
+								<h4 class="title">Opening hours</h4>
+								<p>10:00 - 18:00</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+    </div>
+        </t>
+      </t>
+    </field>
+</record>
+</odoo>

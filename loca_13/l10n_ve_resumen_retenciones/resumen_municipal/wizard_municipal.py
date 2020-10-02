@@ -55,16 +55,9 @@ class ResumenMunicipalModelo(models.Model):
     def rif2(self,aux):
         #nro_doc=self.partner_id.vat
         busca_partner = self.env['res.partner'].search([('id','=',aux)])
-        if busca_partner:
-            for det in busca_partner:
-                tipo_doc=busca_partner.doc_type
-                if busca_partner.vat:
-                    nro_doc=str(busca_partner.vat)
-                else:
-                    nro_doc='0000000000'
-        else:
-            nro_doc='000000000'
-            tipo_doc='V'
+        for det in busca_partner:
+            tipo_doc=busca_partner.doc_type
+            nro_doc=str(busca_partner.vat)
         nro_doc=nro_doc.replace('V','')
         nro_doc=nro_doc.replace('v','')
         nro_doc=nro_doc.replace('E','')
@@ -75,8 +68,6 @@ class ResumenMunicipalModelo(models.Model):
         nro_doc=nro_doc.replace('j','')
         nro_doc=nro_doc.replace('P','')
         nro_doc=nro_doc.replace('p','')
-        nro_doc=nro_doc.replace('c','')
-        nro_doc=nro_doc.replace('C','')
         nro_doc=nro_doc.replace('-','')
         
         if tipo_doc=="v":
@@ -91,7 +82,7 @@ class ResumenMunicipalModelo(models.Model):
             tipo_doc="P"
         if tipo_doc=="c":
             tipo_doc="C"
-        resultado=str(tipo_doc)+"-"+str(nro_doc)
+        resultado=str(tipo_doc)+str(nro_doc)
         return resultado
 
 class WizardReport_2(models.TransientModel): # aqui declaro las variables del wizar que se usaran para el filtro del pdf
@@ -165,24 +156,6 @@ class WizardReport_2(models.TransientModel): # aqui declaro las variables del wi
             result="0,00"
         return result
 
-    def conv_div_nac(self,valor,selff):
-        selff.invoice_id.currency_id.id
-        fecha_contable_doc=selff.invoice_id.date
-        monto_factura=selff.invoice_id.amount_total
-        valor_aux=0
-        #raise UserError(_('moneda compañia: %s')%self.company_id.currency_id.id)
-        if selff.invoice_id.currency_id.id!=self.company_id.currency_id.id:
-            tasa= self.env['account.move'].search([('id','=',selff.invoice_id.id)],order="id asc")
-            for det_tasa in tasa:
-                monto_nativo=det_tasa.amount_untaxed_signed
-                monto_extran=det_tasa.amount_untaxed
-                valor_aux=abs(monto_nativo/monto_extran)
-            rate=round(valor_aux,2)  # LANTA
-            #rate=round(valor_aux,2)  # ODOO SH
-            resultado=valor*rate
-        else:
-            resultado=valor
-        return resultado
 
     def get_invoice(self):
         t=self.env['resumen.municipal.wizard.pdf']
@@ -206,7 +179,7 @@ class WizardReport_2(models.TransientModel): # aqui declaro las variables del wi
                 'nro_comp':det.name,
                 'invoice_number':det_line.invoice_number,
                 'invoice_ctrl_number':det_line.invoice_ctrl_number,
-                'factura_total':signo*self.conv_div_nac(det.invoice_id.amount_total,det),
+                'factura_total':signo*det.invoice_id.amount_total,
                 'base_imponible':signo*det_line.base_tax,
                 'retenido':signo*det_line.wh_amount,
                 'porcentaje':det_line.aliquot,

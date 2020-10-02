@@ -9,11 +9,11 @@
             <tree>
                 <!-- Add your fields here -->
                 <field name="name" string="Número de Comprobante"/>
-                <field name="invoice_number"/>
+                <field name="invoice_id"/>
                 <field name="type"/>
                 <field name="partner_id"/>
-                <field name="amount_untaxed" sum="amount_untaxed"/>
-                <field name="vat_retentioned" string="ISLR Retenido" sum="vat_retentioned"/>
+                <field name="amount_untaxed"/>
+                <field name="vat_retentioned" string="ISLR Retenido"/>
                 <field name="date_isrl" string="Fecha ISLR"/>
                 <!--field name="move_id"/-->
             </tree>

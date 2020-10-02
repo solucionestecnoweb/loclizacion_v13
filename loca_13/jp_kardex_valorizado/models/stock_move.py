@@ -3,23 +3,12 @@ from odoo import api, fields, models, _
 from odoo.exceptions import UserError
 from datetime import datetime, timedelta
 
-import logging
-_logger = logging.getLogger(__name__)
-
 class StockMove(models.Model):
     _inherit = 'stock.move'
 
     kardex_price_unit = fields.Float(string='Kardex Price Unit', default=0) # digits=(total, decimal)
     type_operation_sunat_id = fields.Many2one('type.operation.kardex','Tipo de Transacción')
-    valoracion = fields.One2many(comodel_name='stock.valuation.layer', inverse_name='stock_move_id', string='Valoracion')
-    
-    def set_kardex_price_unit(self):
-        total = 0 
-        for item in self.valoracion : 
-            total += item.value
-        self.kardex_price_unit = total / self.product_qty 
-        self.kardex_price_unit =  self.kardex_price_unit - self.price_unit 
-        
+
     def _create_in_svl(self, forced_quantity=None):
         res = super(StockMove, self)._create_in_svl()
         for valuation in res:
@@ -95,56 +84,51 @@ class ProductProduct(models.Model):
         last_price = 0
         inicial = True
         movimientos =  self.movimientos()
-
-       
-
         for line in movimientos :
-            
-            if line[16] :
+            tipo = self.env['type.operation.kardex'].search([('name','=',line[3])])
+            if len(tipo) == 0 :
                 tipo = self.env['type.operation.kardex'].search([('id','=',line[16])])
-            else :
-                tipo = self.env['type.operation.kardex'].search([('name','=',line[3])])
+
             if len(tipo) > 0 :
-                try:
-                                       
-                    if line[10]  > 0:
-                        saldo +=  line[10]  if line[10] > 0 else 0
-                        ing =  round(line[10] * line[12] if  line[12] else 0,2)
-                        saldo_total +=  ing 
-                        last_price = saldo_total / saldo if  saldo > 0 else last_price
+                saldo = saldo + line[10] - line[11]
+                if last_price == 0:
+                    last_price = line[12]
                     
-                    if line[11] > 0 :
-                        saldo -=  line[11]  if line[11] > 0 else 0 
-                        sal = round(last_price * line[11],2) if line[11] else 0
-                        saldo_total -= sal
+                ing = round((line[12] if line[12] and line[12]>0 else last_price) * line[10],2) if line[10] else 0
+                sal = round(last_price * line[11],2) if line[11] else 0
+                if line[13] == 1 or line[13] == None: 
+                    saldo_total = saldo_total + ing - sal
+                    if line[14] and line[15] == False or line[14] and line[15] == True :
+                        last_price = last_price
+                    else:
+                        last_price = saldo_total / saldo if saldo_total and saldo > 0 else 0
+                else:
+                    saldo_total = saldo_total + ing - sal
 
-                    if line[10] > 0:
-                        self.env['product.product.kardex.line'].create({
-                        'name': self.id,
-                        'fecha': line[8],
-                        'type_operation_sunat_id' : tipo[0].id,
-                        'cantidad_entradas':line[10],
-                        'costo_entradas':line[12],
-                        'total_bolivares_entradas': line[10] * line[12] if  line[12] else 0,
-                        'total':saldo,
-                        'promedio':last_price,
-                        'total_bolivares':saldo_total
-                        })
-                    else :
-                        self.env['product.product.kardex.line'].create({
-                        'name': self.id,
-                        'fecha': line[8],
-                        'type_operation_sunat_id' : tipo[0].id,
-                        'cantidad_salidas':line[11],
-                        'costo_salidas': last_price , 
-                        'total_bolivares_salida': line[11] * last_price,
-                        'total':saldo,
-                        'promedio':  last_price,
-                        'total_bolivares':saldo_total
-                        })
-                except Exception as err:
-                    _logger.error("%s", line)
-
+                if line[10] > 0:
+                    self.env['product.product.kardex.line'].create({
+                    'name': self.id,
+                    'fecha': line[8],
+                    'type_operation_sunat_id' : tipo[0].id,
+                    'cantidad_entradas':line[10],
+                    'costo_entradas':line[12],
+                    'total_bolivares_entradas': line[10] * line[12] if  line[12] else 0,
+                    'total':saldo,
+                    'promedio':last_price,
+                    'total_bolivares':saldo_total
+                    })
+                else :
+                    self.env['product.product.kardex.line'].create({
+                    'name': self.id,
+                    'fecha': line[8],
+                    'type_operation_sunat_id' : tipo[0].id,
+                    'cantidad_salidas':line[11],
+                    'costo_salidas':last_price,
+                    'total_bolivares_salida': line[11] * last_price,
+                    'total':saldo,
+                    'promedio':last_price,
+                    'total_bolivares':saldo_total
+                    })
 
     def movimientos(self):
         cad = ""
@@ -224,12 +208,12 @@ class ProductProduct(models.Model):
                 case 
             when sm.type_operation_sunat_id is  NULL then 
                 case 
-                    when spt.code = 'incoming' or coalesce(spt.code , '') = '' then sm.product_qty   
+                    when spt.code = 'incoming' or coalesce(spt.code , '') = '' then sm.product_qty
                     else  0
                 end
             else 
                 case 
-                    when sm.type_operation_sunat_id = 10 or  sm.type_operation_sunat_id = 14 then 0
+                    when sm.type_operation_sunat_id = 10 then 0
                     else sm.product_qty
                 end
         end as "Entrada",
@@ -241,7 +225,7 @@ class ProductProduct(models.Model):
                 end
             else 
                 case 
-                    when sm.type_operation_sunat_id = 10 or  sm.type_operation_sunat_id = 14 then sm.product_qty
+                    when sm.type_operation_sunat_id = 10 then sm.product_qty
                     else 0
                 end
         end as "Salida",
@@ -274,7 +258,6 @@ class ProductProduct(models.Model):
         and (sml.location_id in """ +str(tuple(s_loca))+ """ or sml.location_dest_id in """ +str(tuple(s_loca))+ """)
         and svl.stock_landed_cost_id is NULL
         and sm.state = 'done'
-        --and svl.unit_cost > 0
         order by "Fecha"
         """
         self.env.cr.execute(sql)
@@ -309,11 +292,4 @@ class ProductKardexLine(models.TransientModel):
     promedio     = fields.Float(string='Promedio')
     total_bolivares     = fields.Float(string='Total Bolivares')
     
-class StockScrap(models.Model):
-    _inherit = 'stock.scrap'
-  
-    def action_validate(self):
-        t = super(StockScrap, self).action_validate() 
-        tipo = self.env['type.operation.kardex'].search([('id','=','14')])
-        self.move_id.type_operation_sunat_id = tipo[0].id
-        return t
+    

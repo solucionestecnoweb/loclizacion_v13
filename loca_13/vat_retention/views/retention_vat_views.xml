@@ -138,12 +138,11 @@
         <field name="arch" type="xml">
             <tree string="VAT Retention">
                 <field name="name"/>
-                <!--field name="invoice_id"/-->
-                <field name="invoice_number"/>
+                <field name="invoice_id"/>
                 <field name="type" string="Tipo" />
                 <field name="partner_id"/>
-                <field name="amount_untaxed" string="Importe Base" sum="amount_untaxed"/>
-                <field name="vat_retentioned" string="Importe Retenido" sum="vat_retentioned"/>
+                <field name="amount_untaxed" string="Importe Base"/>
+                <field name="vat_retentioned" string="Importe Retenido"/>
                 <field name="voucher_delivery_date" string="Fecha Comp."/>
                 <!-- <field name="journal_id"/> -->
             </tree>

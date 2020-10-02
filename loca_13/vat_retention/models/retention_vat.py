@@ -54,35 +54,6 @@ class VatRetentionInvoiceLine(models.Model):
         else:
             result = "0,00"
         return result
-
-    def valida_excento(self,id_tax,id_retention):
-        tipo=self.tax_id.aliquot
-        valor_excento=0
-        cant_reduced=0
-        cant_general=0
-        cant_additional=0
-        resultado=''
-        lista_det = self.env['vat.retention.invoice.line'].search([('retention_id','=',self.retention_id.id)])
-        for det in lista_det:
-            if det.tax_id.amount==0:
-                valor_excento=valor_excento+det.amount_untaxed
-
-            if det.tax_id.aliquot=='reduced':
-                cant_reduced=cant_reduced+1
-            if det.tax_id.aliquot=='general':
-                cant_general=cant_general+1
-            if det.tax_id.aliquot=='additional':
-                cant_additional=cant_additional+1
-
-        if tipo=='general' and cant_general>0:
-            resultado=str(self.float_format(valor_excento))
-        if tipo=='reduced' and cant_reduced>0 and cant_general==0:
-            resultado=str(self.float_format(valor_excento))
-        if tipo=='additional' and cant_additional>0 and cant_reduced==0 and cant_general==0:
-            resultado=str(self.float_format(valor_excento))
-
-        return str(resultado)
-
  
 
     #@api.depends('amount_vat_ret', 'retention_rate')
@@ -463,34 +434,16 @@ class RetentionVat(models.Model):
                 vals['name']= '00000000'
         return super().create(vals)
 
-    def conv_div_extranjera(self,valor):
-        self.invoice_id.currency_id.id
-        fecha_contable_doc=self.invoice_id.date
-        monto_factura=self.invoice_id.amount_total
-        valor_aux=0
-        #raise UserError(_('moneda compañia: %s')%self.company_id.currency_id.id)
-        if self.invoice_id.currency_id.id!=self.company_id.currency_id.id:
-            tasa= self.env['res.currency.rate'].search([('currency_id','=',self.invoice_id.currency_id.id),('name','<=',self.invoice_id.date)],order="name asc")
-            for det_tasa in tasa:
-                if fecha_contable_doc>=det_tasa.name:
-                    valor_aux=det_tasa.rate
-            rate=round(1/valor_aux,2)  # LANTA
-            #rate=round(valor_aux,2)  # ODOO SH
-            resultado=valor/rate
-        else:
-            resultado=valor
-        return resultado
 
     def registro_movimiento_retencion(self,consecutivo_asiento):
         #raise UserError(_('darrell = %s')%self.partner_id.vat_retention_rate)
         name = consecutivo_asiento
         signed_amount_total=0
-        amont_totall=self.vat_retentioned #self.conv_div_extranjera(self.vat_retentioned)
         #amount_itf = round(float(total_monto) * float((igtf_porcentage / 100.00)),2)
         if self.type=="in_invoice" or self.type=="in_receipt":
-            signed_amount_total=amont_totall
+            signed_amount_total=self.vat_retentioned
         if self.type=="out_invoice" or self.type=="out_receipt":
-            signed_amount_total=(-1*amont_totall)
+            signed_amount_total=(-1*self.vat_retentioned)
 
         if self.type=="out_invoice" or self.type=="out_refund" or self.type=="out_receipt":
             id_journal=self.partner_id.ret_jrl_id.id
@@ -510,7 +463,6 @@ class RetentionVat(models.Model):
             #'amount_total_signed':signed_amount_total,# LISTO
             'type': "entry",# estte campo es el que te deja cambiar y almacenar valores
             'vat_ret_id': self.id,
-            #'currency_id':self.invoice_id.currency_id.id,
         }
         #raise UserError(_('value= %s')%value)
         move_obj = self.env['account.move']
@@ -521,8 +473,7 @@ class RetentionVat(models.Model):
     def registro_movimiento_linea_retencion(self,id_movv,consecutivo_asiento):
         #raise UserError(_('ID MOVE = %s')%id_movv)
         name = consecutivo_asiento
-        valores = self.vat_retentioned #self.conv_div_extranjera(self.vat_retentioned) #VALIDAR CONDICION
-        #raise UserError(_('valores = %s')%valores)
+        valores = self.vat_retentioned #VALIDAR CONDICION
         cero = 0.0
         if self.type=="out_invoice" or self.type=="out_refund" or self.type=="out_receipt":
             cuenta_ret_cliente=self.partner_id.account_ret_receivable_id.id# cuenta retencion cliente
@@ -562,7 +513,6 @@ class RetentionVat(models.Model):
              'date': self.move_id.date,
              'partner_id': self.partner_id.id,
              'account_id': cuenta_haber,
-             #'currency_id':self.invoice_id.currency_id.id,
              #'amount_currency': 0.0,
              #'date_maturity': False,
              'credit': valores,
@@ -573,7 +523,6 @@ class RetentionVat(models.Model):
              'price_total':balances,
 
         }
-
         move_line_obj = self.env['account.move.line']
         move_line_id1 = move_line_obj.create(value)
 
@@ -585,6 +534,7 @@ class RetentionVat(models.Model):
         value['price_unit'] = balances
         value['price_subtotal'] = balances
         value['price_total'] = balances
+
 
         move_line_id2 = move_line_obj.create(value)
 

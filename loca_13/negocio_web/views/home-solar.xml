@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<record id="home_solar" model="website.page">
+<field name="name">Home solar</field>
+<field name="url">/home-solar</field>
+<field name="type">qweb</field>
+<field name="key">negocio_web.home_solar</field>
+<field name="website_published">True</field>
+<field name="arch" type="xml">
+<t t-name="negocio_web.home_solar_template">
+<t t-call="website.layout">
+  <div id="wrap" class="oe_structure oe_empty">
+            <section id="negocio_slider" class="carousel s_carousel s_carousel_default s_carousel_alan slide main-half-slider white-text" data-ride="carousel">
+	<ol class="carousel-indicators">
+		<li data-target="#negocio_slider" data-slide-to="0" class="active"></li>
+		<li data-target="#negocio_slider" data-slide-to="1" class=""></li>
+	</ol>
+	<div class="carousel-inner">
+		<div class="carousel-item bg active" style="background-image: url('/negocio_web/static/src/img/solar/slider-01.jpg');">
+			<div class="container">
+				<div class="row slider align-items-center slider">
+					<div class="col-sm-12 col-lg-6 col-md-8">
+						<div class="banner-text">
+							<h6>THINK OUTSIDE THE BARREL</h6>
+							<h2 class="banner-title md fw-700">Introducing World&apos;s Longest Wind Turbine</h2>
+							<div class="description">We denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment.</div>
+							<div class="button-group"> <a href="#" class="btn btn-primary">Read more</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="carousel-item bg" style="background-image: url('/negocio_web/static/src/img/solar/slider-02.jpg');">
+			<div class="container">
+				<div class="row slider align-items-center slider">
+					<div class="col-sm-12 col-lg-6 col-md-8">
+						<div class="banner-text">
+							<h6>THINK OUTSIDE THE BARREL</h6>
+							<h2 class="banner-title md fw-700">Introducing World&apos;s Longest Wind Turbine</h2>
+							<div class="description">We denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment.</div>
+							<div class="button-group"> <a href="#" class="btn btn-primary">Read more</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a class="carousel-control-prev" href="#negocio_slider" role="button" data-slide="prev"> <span class="carousel-control-prev-icon"></span>
+		<span class="sr-only">Previous</span>
+	</a>
+	<a class="carousel-control-next" href="#negocio_slider" role="button" data-slide="next"> <span class="carousel-control-next-icon"></span>
+		<span class="sr-only">Next</span>
+	</a>
+</section>
+<section class="section-xs grey-bg" style="padding-bottom: 100px">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3 text-center">
+				<div class="section-title">
+					<div class="title-tagline">WHY WIND ENERGY</div>
+					<h2 class="f-weight-700">It&apos;s More Than Just Energy</h2>
+					<span class="heading-separator h-center"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section-md pt-0">
+	<div class="container">
+		<div class="row" style="margin-top: -100px;">
+			<div class="col-md-4">
+				<div class="feature-box white-bg feature-shadow">
+					<div class="feature-icon"> <span class="icon">
+                    <i class="fa fa-money"></i>
+                  </span>
+					</div>
+					<div class="feature-info">
+						<h3 class="title mb-0">Cost reduction</h3>  <a href="#" class="f-link">Read More</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="feature-box white-bg feature-shadow">
+					<div class="feature-icon"> <span class="icon">
+                    <i class="fa fa-cube"></i>
+                  </span>
+					</div>
+					<div class="feature-info">
+						<h3 class="title mb-0">Energy saving</h3>  <a href="#" class="f-link">Read More</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="feature-box white-bg feature-shadow">
+					<div class="feature-icon"> <span class="icon">
+                    <i class="fa fa-ship"></i>
+                  </span>
+					</div>
+					<div class="feature-info">
+						<h3 class="title mb-0">Eco friendly</h3>
+						<a href="#" class="f-link">Read More</a> 
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-8">
+			<div class="col-md-4  align-self-center">
+				<div class="section-title">
+					<div class="title-tagline">WIND ENERGY BASIC</div>
+					<h2 class="f-weight-700">Wind Energy for Enriching the World</h2>
+					<span class="heading-separator"></span>
+					<p>These cases are perfectly simple and easy to distinguish. In a free hour, when our power off choice isuntrammelled and when nothing</p>
+				</div> <a href="#" class="btn btn-primary">READMORE</a>
+			</div>
+			<div class="col-md-8 col-lg-7 offset-lg-1 xs-mt-4">
+				<div class="row">
+					<div class="col-md-6">
+						<img class="card-img-top" src="/negocio_web/static/src/img/solar/img-01.jpg" alt="Service" />
+						<div class="card card-shadow">
+							<div class="card-body pt-2">
+								<h5 class="card-title fw-700">Integrated Solutions</h5>
+								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<img class="card-img-top" src="/negocio_web/static/src/img/solar/img-02.jpg" alt="Service" />
+						<div class="card card-shadow">
+							<div class="card-body pt-2">
+								<h5 class="card-title fw-700">Latest Technologies</h5>
+								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section-md overlay bg white-text" data-overlay-color="dark" data-overlay="5" style="background: url('/negocio_web/static/src/img/solar/bg-01.jpg') no-repeat 0 0;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 align-self-center">
+				<div class="section-title">
+					<div class="title-tagline">Some Facts</div>
+					<h2 class="f-weight-700">FACT OF OUR BUSINESS On the other hand, we denounce 
+pleasure of the moment</h2>
+				</div>
+			</div>
+			<div class="col-md-2 offset-md-1">
+				<div class="counter-box counter-icon">
+					<div class="icon"> <i class="fa fa-diamond"></i>
+					</div>
+					<h2 class="number"><span class="timer" data-from="0" data-to="100" data-speed="1200" data-refresh-interval="5">100</span>+</h2>
+					<p>Global Customer</p>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="counter-box counter-icon">
+					<div class="icon"> <i class="fa fa-user-o"></i>
+					</div>
+					<h2 class="number"><span class="timer" data-from="0" data-to="150" data-speed="1200" data-refresh-interval="5">150</span>+</h2>
+					<p>Global Customer</p>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="counter-box counter-icon">
+					<div class="icon"> <i class="fa fa-smile-o"></i>
+					</div>
+					<h2 class="number"><span class="timer" data-from="0" data-to="500" data-speed="1200" data-refresh-interval="5">500</span>+</h2>
+					<p>Global Customer</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section-md grey-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3 text-center">
+				<div class="section-title">
+					<div class="title-tagline">Our Projects</div>
+					<h2 class="f-weight-700">Featured Projects</h2>
+					<span class="heading-separator h-center"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="columns-3 popup-gallery">
+					<div class="grid-item">
+						<div class="portfolio-item">
+							<div class="portfolio-image">
+								<img src="/negocio_web/static/src/img/solar/project-01.jpg" alt="Design" />
+								<a class="popup popup-img" title="Project" href="/negocio_web/static/src/img/solar/project-01.jpg"> <i class="fa fa-plus"></i>
+								</a>
+							</div>
+							<div class="portfolio-info">
+								<h4 class="portfolio-title">
+                        <a href="#">Apartment buildings</a>
+                      </h4>
+								<span class="portfolio-category">Vitae auctor eu augue</span>
+							</div>
+						</div>
+					</div>
+					<div class="grid-item">
+						<div class="portfolio-item">
+							<div class="portfolio-image">
+								<img src="/negocio_web/static/src/img/solar/project-02.jpg" alt="Design" />
+								<a class="popup popup-img" title="Project" href="/negocio_web/static/src/img/solar/project-02.jpg"> <i class="fa fa-plus"></i>
+								</a>
+							</div>
+							<div class="portfolio-info">
+								<h4 class="portfolio-title">
+                        <a href="#">City planning</a>
+                      </h4>
+								<span class="portfolio-category">Vitae auctor eu augue</span>
+							</div>
+						</div>
+					</div>
+					<div class="grid-item">
+						<div class="portfolio-item">
+							<div class="portfolio-image">
+								<img src="/negocio_web/static/src/img/solar/project-03.jpg" alt="Design" />
+								<a class="popup popup-img" title="Project" href="/negocio_web/static/src/img/solar/project-03.jpg"> <i class="fa fa-plus"></i>
+								</a>
+							</div>
+							<div class="portfolio-info">
+								<h4 class="portfolio-title">
+                        <a href="#">Edge Hill home</a>
+                      </h4>
+								<span class="portfolio-category">Vitae auctor eu augue</span>
+							</div>
+						</div>
+					</div>
+					<div class="grid-item">
+						<div class="portfolio-item">
+							<div class="portfolio-image">
+								<img src="/negocio_web/static/src/img/solar/project-04.jpg" alt="Design" />
+								<a class="popup popup-img" title="Project" href="/negocio_web/static/src/img/solar/project-04.jpg"> <i class="fa fa-plus"></i>
+								</a>
+							</div>
+							<div class="portfolio-info">
+								<h4 class="portfolio-title">
+                        <a href="#">High-rise building</a>
+                      </h4>
+								<span class="portfolio-category">Vitae auctor eu augue</span>
+							</div>
+						</div>
+					</div>
+					<div class="grid-item">
+						<div class="portfolio-item">
+							<div class="portfolio-image">
+								<img src="/negocio_web/static/src/img/solar/project-05.jpg" alt="Design" />
+								<a class="popup popup-img" title="Project" href="/negocio_web/static/src/img/solar/project-05.jpg"> <i class="fa fa-plus"></i>
+								</a>
+							</div>
+							<div class="portfolio-info">
+								<h4 class="portfolio-title">
+                        <a href="#">Hotel apartments</a>
+                      </h4>
+								<span class="portfolio-category">Vitae auctor eu augue</span>
+							</div>
+						</div>
+					</div>
+					<div class="grid-item">
+						<div class="portfolio-item">
+							<div class="portfolio-image">
+								<img src="/negocio_web/static/src/img/solar/project-06.jpg" alt="Design" />
+								<a class="popup popup-img" title="Project" href="/negocio_web/static/src/img/solar/project-06.jpg"> <i class="fa fa-plus"></i>
+								</a>
+							</div>
+							<div class="portfolio-info">
+								<h4 class="portfolio-title">
+                        <a href="#">Urban building</a>
+                      </h4>
+								<span class="portfolio-category">Vitae auctor eu augue</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section-md pb-0 overlay pos-r" data-overlay-color="dark" data-overlay="5" style="background: url('/negocio_web/static/src/img/solar/bg-02.jpg') no-repeat 0 0; background-size: cover;">
+	<div class="container"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3 text-center white-text">
+				<div class="section-title">
+					<h6 class="f-weight-600">A choice that makes the difference.</h6>
+					<h2 class="f-weight-700">Why choose us?<br/>Because we&apos;re the best.</h2>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="process-steps process_three_elem clearfix white-text">
+				<ul>
+					<li class="pss-item">
+						<div class="pss-container">
+							<div class="pss-step-number"><span>1</span>
+							</div>
+							<div class="pss-text-area">
+								<h5>Simple and easy</h5>
+								<p>Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent</p>
+							</div>
+						</div>
+					</li>
+					<li class="pss-item">
+						<div class="pss-container">
+							<div class="pss-step-number"><span>2</span>
+							</div>
+							<div class="pss-text-area">
+								<h5>Save money</h5>
+								<p>Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent</p>
+							</div>
+						</div>
+					</li>
+					<li class="pss-item">
+						<div class="pss-container">
+							<div class="pss-step-number"><span>3</span>
+							</div>
+							<div class="pss-text-area">
+								<h5>Installation included</h5>
+								<p>Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent</p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section-md">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5">
+				<div class="section-title">
+					<div class="title-tagline">Questions From Customers</div>
+					<h2 class="f-weight-700">Wind Energy for Enriching the World</h2>
+					<span class="heading-separator"></span>
+					<p>These cases are perfectly simple and easy to distinguish. In a free hour, when our power off choice isuntrammelled and when nothing</p>
+				</div> <a href="#" class="btn btn-primary">READMORE</a>
+			</div>
+			<div class="col-md-6 offset-md-1 align-items-center s_faq_collapse acc-style-2 xs-mt-4">
+				<div id="myCollapse2" class="accordion" role="tablist">
+					<div class="card"> <a href="#" role="tab" data-toggle="collapse" aria-expanded="false" class="card-header o_default_snippet_text collapsed" data-parent="#myCollapse2" data-target="#myCollapseTab1" data-original-title="" title="" aria-describedby="tooltip24569">Links to other Websites</a>
+						<div class="collapse" role="tabpanel" id="myCollapseTab1" style="">
+							<div class="card-body">
+								<p class="card-text o_default_snippet_text">Although this Website may be linked to other websites, we are not, directly or indirectly, implying any approval, association, sponsorship, endorsement, or affiliation with any linked website, unless specifically stated herein.</p>
+								<p class="card-text o_default_snippet_text">You should carefully review the legal statements and other conditions of use of any website which you access through a link from this Website. Your linking to any other off-site pages or other websites is at your own risk.</p>
+							</div>
+						</div>
+					</div>
+					<div class="card" style=""> <a href="#" role="tab" data-toggle="collapse" aria-expanded="false" class="card-header o_default_snippet_text collapsed" data-parent="#myCollapse2" data-target="#myCollapseTab2" data-original-title="" title="" aria-describedby="tooltip872977">Terms of service</a>
+						<div class="collapse" role="tabpanel" id="myCollapseTab2" style="">
+							<div class="card-body">
+								<p class="card-text o_default_snippet_text">Although this Website may be linked to other websites, we are not, directly or indirectly, implying any approval, association, sponsorship, endorsement, or affiliation with any linked website, unless specifically stated herein.</p>
+								<p class="card-text o_default_snippet_text">You should carefully review the legal statements and other conditions of use of any website which you access through a link from this Website. Your linking to any other off-site pages or other websites is at your own risk.</p>
+							</div>
+						</div>
+					</div>
+					<div class="card"> <a href="#" role="tab" data-toggle="collapse" aria-expanded="false" class="card-header o_default_snippet_text collapsed" data-parent="#myCollapse2" data-target="#myCollapseTab3">Use of Cookies</a>
+						<div class="collapse" role="tabpanel" id="myCollapseTab3" style="">
+							<div class="card-body">
+								<p class="card-text o_default_snippet_text">Although this Website may be linked to other websites, we are not, directly or indirectly, implying any approval, association, sponsorship, endorsement, or affiliation with any linked website, unless specifically stated herein.</p>
+								<p class="card-text o_default_snippet_text">You should carefully review the legal statements and other conditions of use of any website which you access through a link from this Website. Your linking to any other off-site pages or other websites is at your own risk.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+    </div>
+        </t>
+      </t>
+    </field>
+</record>
+</odoo>

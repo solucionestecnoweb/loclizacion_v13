@@ -63,8 +63,6 @@ class AccountMove(models.Model):
                 'total':total,
                 }
                 islr_obj.create(values)
-        #lista_mov = self.env['isrl.retention'].search([('id','=',self.isrl_ret_id.id)])
-        #lista_mov.write({'vat_retentioned':7777})
 
     def create_retention(self):
         if self.type in ('in_invoice','out_invoice','in_refund','out_refund','in_receipt','out_receipt'):#darrell
@@ -81,7 +79,7 @@ class AccountMove(models.Model):
                         if item.concept_isrl_id:
                             for rate in item.concept_isrl_id.rate_ids:
                                 #raise UserError(_('item.price_subtotal=%s ')%rate.min)
-                                if self.partner_id.people_type == rate.people_type and  self.conv_div_nac(item.price_subtotal) > rate.min  :
+                                if self.partner_id.people_type == rate.people_type and  item.price_subtotal > rate.min  :
                                     base = item.price_subtotal * (rate.subtotal / 100)
                                     subtotal =  base * (rate.retention_percentage / 100)
                                     #raise UserError(_('base = %s')%base)
@@ -90,10 +88,10 @@ class AccountMove(models.Model):
                                         'code':rate.code,
                                         'retention_id': self.isrl_ret_id.id,
                                         'cantidad': rate.retention_percentage,
-                                        'base': self.conv_div_nac(base),
-                                        'retention': self.conv_div_nac(subtotal),
+                                        'base': base,
+                                        'retention': subtotal,
                                         'sustraendo': rate.subtract,
-                                        'total': self.conv_div_nac(subtotal - rate.subtract), # AQUI
+                                        'total': subtotal - rate.subtract
                                     })
                 else :
                     raise UserError("the Partner does not have identified the type of person.")
@@ -101,25 +99,6 @@ class AccountMove(models.Model):
         if self.type =='in_invoice' or self.type =='in_refund' or self.type =='in_receipt':#darrell
         #if self.type=='in_invoice':
             self.isrl_ret_id.action_post()
-
-
-    def conv_div_nac(self,valor):
-        self.currency_id.id
-        fecha_contable_doc=self.date
-        monto_factura=self.amount_total
-        valor_aux=0
-        #raise UserError(_('moneda compañia: %s')%self.company_id.currency_id.id)
-        if self.currency_id.id!=self.company_id.currency_id.id:
-            tasa= self.env['res.currency.rate'].search([('currency_id','=',self.currency_id.id),('name','<=',self.date)],order="name asc")
-            for det_tasa in tasa:
-                if fecha_contable_doc>=det_tasa.name:
-                    valor_aux=det_tasa.rate
-            rate=round(1/valor_aux,2)  # LANTA
-            #rate=round(valor_aux,2)  # ODOO SH
-            resultado=valor*rate
-        else:
-            resultado=valor
-        return resultado
 
     def verifica_exento_islr(self):
         acum=0

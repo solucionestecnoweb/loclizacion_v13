@@ -35,8 +35,8 @@
                         <field name="journal_id"/> <!--domain="[('type','=','islr_sale')]"/-->
                         <field name="type"/>
                         <field name="code"/>
-                        <!--field
-                            name="partner_id" domain="[('islr_withholding_agent','=',True),('customer','=',True),('parent_id','=',False)]"/-->
+                        <field
+                            name="partner_id" domain="[('islr_withholding_agent','=',True),('customer','=',True),('parent_id','=',False)]"/>
                         <field name="currency_id" readonly="1"/>
                         <field name="date_ret" required="1"/>
                         <field name="account_id"/> <!--domain="[('type','=', type in ('in_invoice','in_refund') and 'payable' or 'receivable'), ('company_id', '=', company_id)]"/-->
