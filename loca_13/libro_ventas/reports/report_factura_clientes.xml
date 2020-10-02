@@ -7,8 +7,8 @@
         <field name="name">Folio Libro Ventas</field>
         <field name="default" eval="True"/>
         <field name="format">custom</field>
-        <field name="page_height">382</field>
-        <field name="page_width">630</field>
+        <field name="page_height">497</field>
+        <field name="page_width">810</field>
         <field name="orientation">Portrait</field>
         <field name="margin_top">32</field>
         <field name="margin_bottom">5</field>
@@ -39,29 +39,29 @@
 
                         <table class="table table-condensed ">
                           <tr>
-                            <td colspan="32">
+                            <td colspan="31">
                               <h1>Libro de Ventas</h1>
                             </td>
                           </tr>
                           <tr>
-                            <td colspan="32"><h9>Razón Social: <t t-esc="o.company_id.name"/> </h9></td>
+                            <td colspan="31"><h9>Razón Social: <t t-esc="o.company_id.name"/> </h9></td>
                           </tr>
                           <tr>
-                            <td colspan="32">Rif: <h9><span t-esc="o.doc_cedula2(o.company_id.id)">
+                            <td colspan="31">Rif: <h9><span t-esc="o.doc_cedula2(o.company_id.id)">
                             </span></h9></td>
                           </tr>
                           <tr>
-                            <td colspan="32"><h9>Dirección Fiscal:
+                            <td colspan="31"><h9>Dirección Fiscal:
                               <span t-field="o.company_id.street"> </span> <t t-esc="o.company_id.city" /> <t t-esc="o.company_id.state_id.name"/> <t t-esc="o.company_id.zip" /> <t t-esc="o.company_id.country_id.name" /></h9>
                             </td>
                           </tr>
                           <tr>
-                            <td colspan="32"><h9>Periodo:
+                            <td colspan="31"><h9>Periodo:
                               <span t-field="o.date_from"></span> &amp;nbsp;Hasta:<span t-field="o.date_to"></span></h9>
                             </td>
                           </tr>
                           <tr>
-                            <td colspan="15"> </td>
+                            <td colspan="14"> </td>
                             <td colspan="14">
                               <div align="center">
                               VENTAS INTERNAS
@@ -72,7 +72,7 @@
 
                           <tbody class="table table-bordered">
                           <tr>
-                            <td colspan="15"> </td>
+                            <td colspan="14"> </td>
                             <td colspan="7" style="background-color:#CCCCCC">
                                 <div align="center">
                                   CONTRIBUYENTES
@@ -92,16 +92,16 @@
                             <td>Fecha de Documento </td>
                             <td>Rif</td>
                             <td>Nombre Razón Social </td>
-                            <td>Tipo de Persona </td>
+                            <!--td>Tipo de Persona </td-->
                             <td>Número de Planilla<br/>
                             de Exportación</td>
-                            <td>Nro Factura<br/>
+                            <td width="250">Nro Factura<br/>
                             / Entrega</td>
-                            <td>Nro. de
+                            <td width="250">Nro. de
                             Control</td>
-                            <td>Número <br/>nota
+                            <td width="250">Número <br/>nota
                             de debito</td>
-                            <td>Número <br/>
+                            <td width="250">Número <br/>
                                nota de Crédito
                           </td>
                             <td>Nro. Factura Afectada
@@ -201,7 +201,7 @@
                               <td><t t-esc="line.formato_fecha2(line.invoice_id.invoice_date)"/></td>
                               <td><t t-esc="line.doc_cedula(line.partner.id)"/></td>
                               <td><t t-esc="line.partner.name"/></td>
-                              
+                              <!--
                                 <t t-if="line.partner.people_type == 'resident_nat_people' ">
                                   <td>PNRE</td>
                                 </t>
@@ -215,9 +215,9 @@
                                  <td>PJND</td>
                                 </t>
                                 <t t-if="not line.partner.people_type">
-                                  <td>---</td>
+                                  <td> </td>
                                 </t>
-
+                                  -->
                               <td>-</td>
                               
                               <t t-if="line.tipo_doc == '01' ">
@@ -260,6 +260,11 @@
                                   <t t-set="acum_venta_iva" t-value="acum_venta_iva+line.sale_total"/>
                                 </div>
                                 </t>
+                                <t t-else="">
+                                  <div align="right">
+                                    0,00
+                                  </div>
+                                </t>
                               </td>
                                 <!-- Total con iva-->
 
@@ -270,6 +275,11 @@
                                   <t t-set="acum_fob" t-value="acum_fob+line.sale_total"/>
                                 </div>
                                 </t>
+                                <t t-else="">
+                                  <div align="right">
+                                    0,00
+                                  </div>
+                                </t>
                               </td><!-- total valor fob-->
 
                               <td>
@@ -278,6 +288,11 @@
                                   <t t-esc="line.float_format(line.total_exento)"/>
                                   <t t-set="acum_exento" t-value="acum_exento+line.total_exento"/>
                                 </div>
+                                </t>
+                                <t t-else="">
+                                  <div align="right">
+                                    0,00
+                                  </div>
                                 </t>
                               </td><!-- total exento-->
                               
@@ -290,6 +305,11 @@
                                   <t t-set="acum_b_reducida" t-value="acum_b_reducida+(line.base_reducida)"/>
                                   </div>
                                   </t>
+                                  <t t-else="">
+                                  <div align="right">
+                                    0,00
+                                  </div>
+                                </t>
                                 </td>
                                 <td>
                                   <t t-if="line.invoice_id.partner_id.vendor != 'international'">
@@ -299,6 +319,11 @@
                                 	</t>
                                   </div>
                                   </t>
+                                  <t t-else="">
+                                  <div align="right">
+                                    0,00
+                                  </div>
+                                </t>
                                 </td>
                                 <td>
                                   <t t-if="line.invoice_id.partner_id.vendor != 'international'">
@@ -307,6 +332,11 @@
                                   <t t-set="acum_reducida" t-value="acum_reducida+line.alicuota_reducida"/>
                                   </div>
                                   </t>
+                                  <t t-else="">
+                                  <div align="right">
+                                    0,00
+                                  </div>
+                                </t>
                                 </td>
                                 <td>
                                   <t t-if="line.invoice_id.partner_id.vendor != 'international'">
@@ -324,6 +354,11 @@
                                     <t t-set="acum_b_general" t-value="acum_b_general+(line.base_general+line.base_adicional)"/>
                                   </div>
                                   </t>
+                                  <t t-else="">
+                                  <div align="right">
+                                    0,00
+                                  </div>
+                                </t>
                                 </td>
                                 <td>
                                 <div align="right">
@@ -339,17 +374,22 @@
                                     <t t-set="acum_iva" t-value="acum_iva+(line.alicuota_general+line.alicuota_adicional)"/>
                                   </div>
                                   </t>
+                                  <t t-else="">
+                                  <div align="right">
+                                    0,00
+                                  </div>
+                                </t>
                                 </td>
                               </t>
 
                               <t t-else="">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><div align="right">0,00</div></td>
+                                <td> </td>
+                                <td><div align="right">0,00</div></td>
+                                <td> </td>
+                                <td><div align="right">0,00</div></td>
+                                <td> </td>
+                                <td><div align="right">0,00</div></td>
                               </t>
 
                                <!-- CAMPOS DE NO CONTRIBUYENTES -->
@@ -361,6 +401,11 @@
                                     <t t-set="acum_b_reducida2" t-value="acum_b_reducida2+(line.base_reducida)"/>
                               	  </div>
                                   </t>
+                                  <t t-else="">
+                                  <div align="right">
+                                    0,00
+                                  </div>
+                                </t>
                                 </td>
 
                                 <td>
@@ -379,6 +424,11 @@
                                   <t t-esc="line.float_format(line.alicuota_reducida)"/>
                                   <t t-set="acum_reducida2" t-value="acum_reducida2+line.alicuota_reducida"/>
                                 </div>
+                                </t>
+                                <t t-else="">
+                                  <div align="right">
+                                    0,00
+                                  </div>
                                 </t>
                                 </td>
 
@@ -399,6 +449,11 @@
                                     <t t-set="acum_b_general2" t-value="acum_b_general2+(line.base_general+line.base_adicional)"/>
                                   </div>
                                   </t>
+                                  <t t-else="">
+                                  <div align="right">
+                                    0,00
+                                  </div>
+                                </t>
                                 </td>
 
                                 <td>
@@ -416,17 +471,22 @@
                                     <t t-set="acum_iva2" t-value="acum_iva2+(line.alicuota_general+line.alicuota_adicional)"/>
                                   </div>
                                   </t>
+                                  <t t-else="">
+                                  <div align="right">
+                                    0,00
+                                  </div>
+                                </t>
                                 </td>
 
                               </t>
                               <t t-else="">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><div align="right">0,00</div></td>
+                                <td> </td>
+                                <td><div align="right">0,00</div></td>
+                                <td> </td>
+                                <td><div align="right">0,00</div></td>
+                                <td> </td>
+                                <td><div align="right">0,00</div></td>
                               </t>
                               <!-- Campo Iva retenido-->
                               <td>
@@ -437,6 +497,11 @@
                                 <t t-set="acum_iva_ret" t-value="acum_iva_ret+line.iva_retenido"/>
                                 </div>
                                 </t>
+                                </t>
+                                <t t-else="">
+                                  <div align="right">
+                                    0,00
+                                  </div>
                                 </t>
                               </td>
                               <!-- Campo Nro de Control-->
@@ -457,7 +522,7 @@
                           </tbody>
                           <!-- darrell FILA DE TOTALES -->
                           <tr>
-                            <td colspan="11"> </td>
+                            <td colspan="10"> </td>
                             <td><div align="right">TOTALES:</div></td>
                             <td><div align="right"><t t-esc="o.float_format2(acum_venta_iva)"/></div></td>
 
@@ -571,7 +636,7 @@
                           <tr>
                             <td></td><!--1 -->
                             <td></td><!--2 -->
-                            <td></td><!--3 -->
+                            <!--td></td--><!--3 -->
                             <td></td><!--4 -->
                             <td></td><!--5 -->
                             <td></td><!--6 -->
@@ -620,7 +685,7 @@
                           <tr>
                             <td></td><!--1-->
                             <td></td><!--2-->
-                            <td></td><!--3-->
+                            <!--td></td--><!--3 -->
                             <td></td><!--4-->
                             <td></td><!--5-->                            
                             <td></td><!--6-->
@@ -659,7 +724,7 @@
                           <tr>
                             <td></td><!--1-->
                             <td></td><!--2-->
-                            <td></td><!--3-->
+                            <!--td></td--><!--3 -->
                             <td></td><!--4-->
                             <td></td><!--5-->                            
                             <td></td><!--6-->
@@ -710,7 +775,7 @@
 
                             <td></td><!--1-->
                             <td></td><!--2-->
-                            <td></td><!--3-->
+                            <!--td></td--><!--3 -->
                             <td></td><!--4-->
                             <td></td><!--5-->                            
                             <td></td><!--6-->
@@ -760,7 +825,7 @@
                             <tr>
                             <td></td><!--1-->
                             <td></td><!--2-->
-                            <td></td><!--3-->
+                            <!--td></td--><!--3 -->
                             <td></td><!--4-->
                             <td></td><!--5-->                            
                             <td></td><!--6-->
@@ -811,7 +876,7 @@
                             <tr>
                             <td></td><!--1-->
                             <td></td><!--2-->
-                            <td></td><!--3-->
+                            <!--td></td--><!--3 -->
                             <td></td><!--4-->
                             <td></td><!--5-->                            
                             <td></td><!--6-->
@@ -862,7 +927,7 @@
                             <tr>
                             <td></td><!--1-->
                             <td></td><!--2-->
-                            <td></td><!--3-->
+                            <!--td></td--><!--3 -->
                             <td></td><!--4-->
                             <td></td><!--5-->                            
                             <td></td><!--6-->
