@@ -16,12 +16,49 @@ import csv
 import xlwt
 import xml.etree.ElementTree as ET
 
-class ResumenMunicipalModelo(models.Model):
-    _name = "resumen.municipal.wizard.pdf"
+class TablaTypePeople(models.Model):
+    _name = "resumen.islr.wizard.type.people"
 
-    fecha_comprobante = fields.Date(string='Fecha')
-    partner_id  = fields.Many2one(comodel_name='res.partner', string='Partner')
-    invoice_number =   fields.Char(string='Fac. Número')
+    name=fields.Char(string='Tipo de persona')
+    line_code  = fields.Many2many(comodel_name='resumen.islr.wizard.code', string='Lineas')
+
+    def nombre(self,valor):
+        nombre='---'
+        if valor=='resident_nat_people':
+            nombre='PNRE Persona Natural Residente'
+        if valor=='non_resit_nat_people':
+            nombre='PNNR Persona Natural no Residente'
+        if valor=='domi_ledal_entity':
+            nombre='PJDO Persona Juridica Domiciliada'
+        if valor=='legal_ent_not_domicilied':
+            nombre='PJDO Persona Juridica no Domiciliada'
+        return nombre
+
+class TablaCodigo(models.Model):
+    _name = 'resumen.islr.wizard.code'
+
+    code= fields.Char(string='Codico')
+    islr_concept_id = fields.Many2one('islr.concept')
+    id_people= fields.Many2one('resumen.islr.wizard.type.people')
+    line_resumen = fields.Many2many(comodel_name='resumen.islr.wizard.pdf', string='Lineas')
+
+
+class ResumenIslrModelo(models.Model):
+    _name = "resumen.islr.wizard.pdf"
+
+    fecha_comprobante = fields.Date(string='Fecha Comprobante')
+    #fecha_doc = fields.Date(string='Fecha Documento')
+    invoice_id = fields.Many2one('account.move') # traego rif, fecha factura, datos de proveedor
+    retention_id=fields.Many2one('isrl.retention')
+    code= fields.Char(string='Codico')
+    abono_cta=fields.Float(string='Abono Cuenta')
+    cant_retencion=fields.Float(string='Cantidad de objeto a retencion')
+    porcentaje=fields.Float(string='Porcentaje')
+    total = fields.Float(string='Monto Total')
+    id_code= fields.Many2one('resumen.islr.wizard.code')
+    #partner_id  = fields.Many2one(comodel_name='res.partner', string='Partner')
+    
+    """invoice_number =   fields.Char(string='Fac. Número')
     invoice_ctrl_number = fields.Char(string='Nro Control')
     nro_comp = fields.Char(string='Nro Comprobante')
     factura_total = fields.Float(string='Monto Factura')
@@ -29,7 +66,7 @@ class ResumenMunicipalModelo(models.Model):
     retenido = fields.Float(string='retenido')
     porcentaje = fields.Float(string='Porcentaje')
     codigo = fields.Char(string='Código Actividad Económica')
-    invoice_id = fields.Many2one('account.move')
+    invoice_id = fields.Many2one('account.move')"""
 
 
     def float_format(self,valor):
@@ -55,16 +92,9 @@ class ResumenMunicipalModelo(models.Model):
     def rif2(self,aux):
         #nro_doc=self.partner_id.vat
         busca_partner = self.env['res.partner'].search([('id','=',aux)])
-        if busca_partner:
-            for det in busca_partner:
-                tipo_doc=busca_partner.doc_type
-                if busca_partner.vat:
-                    nro_doc=str(busca_partner.vat)
-                else:
-                    nro_doc='0000000000'
-        else:
-            nro_doc='000000000'
-            tipo_doc='V'
+        for det in busca_partner:
+            tipo_doc=busca_partner.doc_type
+            nro_doc=str(busca_partner.vat)
         nro_doc=nro_doc.replace('V','')
         nro_doc=nro_doc.replace('v','')
         nro_doc=nro_doc.replace('E','')
@@ -75,8 +105,6 @@ class ResumenMunicipalModelo(models.Model):
         nro_doc=nro_doc.replace('j','')
         nro_doc=nro_doc.replace('P','')
         nro_doc=nro_doc.replace('p','')
-        nro_doc=nro_doc.replace('c','')
-        nro_doc=nro_doc.replace('C','')
         nro_doc=nro_doc.replace('-','')
         
         if tipo_doc=="v":
@@ -95,15 +123,16 @@ class ResumenMunicipalModelo(models.Model):
         return resultado
 
 class WizardReport_2(models.TransientModel): # aqui declaro las variables del wizar que se usaran para el filtro del pdf
-    _name = 'wizard.resumen.municipal'
-    _description = "Resumen Retenciones Municipal"
+    _name = 'wizard.resumen.islr'
+    _description = "Resumen Retenciones islr"
 
     date_from  = fields.Date('Date From', default=lambda *a:(datetime.now() - timedelta(days=(1))).strftime('%Y-%m-%d'))
     date_to = fields.Date(string='Date To', default=lambda *a:datetime.now().strftime('%Y-%m-%d'))
     date_actual = fields.Date(default=lambda *a:datetime.now().strftime('%Y-%m-%d'))
 
     company_id = fields.Many2one('res.company','Company',default=lambda self: self.env.user.company_id.id)
-    line  = fields.Many2many(comodel_name='resumen.municipal.wizard.pdf', string='Lineas')
+    line_people  = fields.Many2many(comodel_name='resumen.islr.wizard.type.people', string='Lineas')
+
 
     def rif(self,aux):
         #nro_doc=self.partner_id.vat
@@ -184,40 +213,76 @@ class WizardReport_2(models.TransientModel): # aqui declaro las variables del wi
             resultado=valor
         return resultado
 
-    def get_invoice(self):
-        t=self.env['resumen.municipal.wizard.pdf']
-        d=t.search([])
-        d.unlink()
-        cursor_resumen = self.env['municipality.tax'].search([
-            ('transaction_date','>=',self.date_from),
-            ('transaction_date','<=',self.date_to),
-            ('state','=','posted'),
-            ('type','in',('in_invoice','in_refund','in_receipt'))
+    def get_invoice(self,dett,id_code):
+        t=self.env['resumen.islr.wizard.pdf']
+        cursor_resumen = self.env['isrl.retention'].search([
+            ('date_isrl','>=',self.date_from),
+            ('date_isrl','<=',self.date_to),
+            ('state','=','done'),
             ])
         for det in cursor_resumen:
-            if det.type=="in_refund":
-                signo=-1
-            else:
-                signo=1
-            for det_line in det.act_code_ids:
+            det2=det.lines_id.search([('code','=',id_code.code)])
+            for det_line in det2:
                 values={
-                'fecha_comprobante':det.transaction_date,
-                'partner_id':det.partner_id.id,
-                'nro_comp':det.name,
-                'invoice_number':det_line.invoice_number,
-                'invoice_ctrl_number':det_line.invoice_ctrl_number,
-                'factura_total':signo*self.conv_div_nac(det.invoice_id.amount_total,det),
-                'base_imponible':signo*det_line.base_tax,
-                'retenido':signo*det_line.wh_amount,
-                'porcentaje':det_line.aliquot,
-                'codigo':det_line.code,
+                'fecha_comprobante':det.date_isrl,
                 'invoice_id':det.invoice_id.id,
+                'retention_id':det_line.retention_id.id,
+                'code':det_line.code,
+                'abono_cta':abs(det.invoice_id.amount_total_signed),
+                'cant_retencion':det_line.retention,
+                'porcentaje':det_line.cantidad,
+                'total':det_line.total,
+                'id_code':id_code.id,
+                #'factura_total':signo*self.conv_div_nac(det.invoice_id.amount_total,det),
                 }
                 pdf_id = t.create(values)
-        #   temp = self.env['account.wizard.pdf.ventas'].search([])
-        self.line = self.env['resumen.municipal.wizard.pdf'].search([])
+        line_resumen=self.env['resumen.islr.wizard.pdf'].search([('id_code','=',id_code.code)])
+        code=self.env['resumen.islr.wizard.code'].search([('code','=',dett.code)])# validar el code
+        for x in code:
+            self.env['resumen.islr.wizard.code'].browse(x.id).write({
+                'line_resumen':line_resumen,
+                })
+        #self.line_people = self.env['resumen.islr.wizard.pdf'].search([])
 
-    def print_resumen_municipal(self):
+    def arma_tabla_type_people(self):
+        people=self.env['resumen.islr.wizard.type.people']
+        people.search([]).unlink()
+        code=self.env['resumen.islr.wizard.code']
+        code.search([]).unlink()
+        t=self.env['resumen.islr.wizard.pdf']
+        d=t.search([])
+        d.unlink()
+        aux=''
+        cursor = self.env['islr.rates'].search([],order='people_type ASC')
+        for det_cur in cursor:
+            if det_cur.people_type:
+                if aux!=det_cur.people_type:
+                    aux=det_cur.people_type
+                    values={'name':det_cur.people_type,}
+                    id_people=people.create(values)
+                    #self.arma_tabla_code(det_cur,id_people)
+
+    def arma_tabla_code(self,det_cur,id_people):
+        code2=self.env['resumen.islr.wizard.code']
+        cursor2 = self.env['islr.rates'].search([('people_type','=',det_cur.people_type)])
+        for det in cursor2:
+            values={'code':det.code,'islr_concept_id':det.islr_concept_id.id,'id_people':id_people.id,}
+            id_code=code2.create(values)
+            #self.get_invoice(det,id_code)
+
+        line_code=self.env['resumen.islr.wizard.code'].search([('id_people','=',id_people.id)])
+        people=self.env['resumen.islr.wizard.type.people'].search([('name','=',det_cur.people_type)])
+        for x in people:
+            self.env['resumen.islr.wizard.type.people'].browse(x.id).write({
+                'line_code':line_code,
+                })
+        #raise UserError(_('det_cur.line_code: %s')%det_cur.line_code)
+
+
+    def print_resumen_islr(self):
         #pass
-        self.get_invoice()
-        return {'type': 'ir.actions.report','report_name': 'l10n_ve_resumen_retenciones.libro_resumen_municipal','report_type':"qweb-pdf"}
+        w=self.env['wizard.resumen.islr'].search([('id','!=',self.id)])
+        w.unlink()
+        self.arma_tabla_type_people()
+        #self.line_people = self.env['resumen.islr.wizard.type.people'].search([])
+        #return {'type': 'ir.actions.report','report_name': 'l10n_ve_resumen_retenciones.libro_resumen_islr','report_type':"qweb-pdf"}

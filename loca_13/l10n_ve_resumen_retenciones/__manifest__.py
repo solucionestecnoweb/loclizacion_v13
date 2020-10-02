@@ -22,6 +22,8 @@
         'resumen_iva/wizard.xml',
         'resumen_municipal/wizard.xml',
         'resumen_municipal/reporte_view.xml',
+        'resumen_islr/wizard.xml',
+        'resumen_islr/reporte_view.xml',
     ],
     'application': True,
     'active':False,
