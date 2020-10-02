@@ -159,7 +159,24 @@ class AccountMove(models.Model):
             # se crean los asientos
             #self.asiento_retencion(self.id)
 
-    
+    def conv_div_nac(self,valor):
+        self.currency_id.id
+        fecha_contable_doc=self.date
+        monto_factura=self.amount_total
+        valor_aux=0
+        #raise UserError(_('moneda compañia: %s')%self.company_id.currency_id.id)
+        if self.currency_id.id!=self.company_id.currency_id.id:
+            tasa= self.env['res.currency.rate'].search([('currency_id','=',self.currency_id.id),('name','<=',self.date)],order="name asc")
+            for det_tasa in tasa:
+                if fecha_contable_doc>=det_tasa.name:
+                    valor_aux=det_tasa.rate
+            rate=round(1/valor_aux,2)  # LANTA
+            #rate=round(valor_aux,2)  # ODOO SH
+            resultado=valor*rate
+        else:
+            resultado=valor
+        return resultado
+
     def create_voucher(self,tipo_facttt):
         retention = self.env['vat.retention']
         _logger.info("\n\n\n retention %s\n\n\n", retention)
@@ -200,9 +217,9 @@ class AccountMove(models.Model):
                 'invoice_id': self.id,
                 'move_id': self.id,
                 'invoice_number': self.invoice_number,
-                'amount_untaxed': importe_base,
-                'retention_amount':monto_retenido,
-                'amount_vat_ret':monto_iva,
+                'amount_untaxed': self.conv_div_nac(importe_base),
+                'retention_amount':self.conv_div_nac(monto_retenido),
+                'amount_vat_ret':self.conv_div_nac(monto_iva),
                 'retention_rate':por_ret,
                 'retention_id':ret.id,
                 'tax_id':det_mov_line.tax_ids.id,

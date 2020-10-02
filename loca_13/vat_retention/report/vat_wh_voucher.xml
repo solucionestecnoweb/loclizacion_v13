@@ -182,6 +182,7 @@
                                     </tr>
                                     <t t-set="por_iva" t-value="0" />
                                     <tr  t-foreach="o.retention_line_ids" t-as="line">
+                                      <t t-if="line.tax_id.amount!=0">
                                         <td style="text-align:center;border:1px solid #000;">
                                             <span t-esc="line.formato_fecha()"/>
                                         </td>
@@ -212,14 +213,13 @@
                                         </td>
                                         <td style="text-align:center;border:1px solid #000;">
                                             <!--CAMPO TOTAL COMPRAS CON IVA /-->
-                                            <!--span t-esc="line.float_format(line.invoice_id.amount_total)" /-->
-                                            <span t-esc="line.float_format(line.amount_untaxed+line.amount_vat_ret)" />
+                                            <span t-esc="line.float_format(abs(line.invoice_id.amount_total_signed))" />
+                                            <!--span t-esc="line.float_format(line.amount_untaxed+line.amount_vat_ret)" /-->
                                         </td>
                                         <td style="text-align:center;border:1px solid #000;">
                                             <!-- campo Compras exentas-->
-                                            <t t-if="line.tax_id.amount==0"  >
-                                            <span t-esc="line.float_format(line.amount_untaxed)"/>
-                                            </t>
+                                            <!--span t-esc="line.float_format(line.amount_untaxed)"/-->
+                                            <span t-esc="line.valida_excento(line.tax_id.id,line.retention_id.id)"/>
                                         </td>
                                         <td style="text-align:center;border:1px solid #000;">
                                             <t t-if="line.tax_id.amount!=0"  >
@@ -253,12 +253,13 @@
                                             <span t-esc="line.float_format(line.retention_amount)"/>
                                             </t>
                                         </td>
+                                       </t>
                                     </tr>
                                     <tr>
-                                        <td colspan="13" style="text-align:right;">
-                                            <b>Total Impuesto Retenido</b>
+                                        <td colspan="12" style="text-align:right;">
+                                            <b>Total Impuesto Retenido:</b>
                                         </td>
-                                        <td style="text-align:center;">
+                                        <td style="text-align:right;" colspan='2'>
                                             <b><span t-esc="o.float_format2(o.vat_retentioned)"/></b>
                                         </td>
                                     </tr>

@@ -2,7 +2,12 @@
 <odoo>
     <record id="paperformat_isrl_retention" model="report.paperformat">
         <field name="name">ISLR Retention Report</field>
+        <field name="format">custom</field>
         <field name="orientation">Landscape</field>
+        <field name="page_height">219</field>
+        <field name="page_width">330</field>
+        <field name="margin_top">30</field>
+        <field name="margin_bottom">5</field>
         <field name="header_line" eval="False"/>
     </record>
 
@@ -113,7 +118,7 @@
                             </div>
                             <br/>
                             <div class="container">
-                                <div class="row text-center" style="background-color:#FFFFFF;">
+                                <div class="row text-center" style="background-color:#FFFFFF; font-size:12px;">
                                     <div class="col-1 border border-dark p-2" >
                                         Código 
                                     </div>
@@ -145,25 +150,25 @@
                                        ISLR Monto Retenido 
                                     </div>
                                 </div>
-
+                                <t t-set="total_ret" t-value="0"/>
                                 <div class="row" t-foreach="o.lines_id" t-as="line" >
                                     <div class="col-1 border border-dark p-2 text-center" >
-                                        <span t-field="line.code"/>
+                                        <span style="font-size:11px;" t-field="line.code"/>
                                     </div>
                                     <div class="col-1 border border-dark p-2 text-center" >
-                                       <span style="font-size:15px;" t-field="o.invoice_id.invoice_date"/>
+                                       <span style="font-size:11px;" t-field="o.invoice_id.invoice_date"/>
                                     </div>
                                     <div class="col-1 border border-dark p-2 text-center" >
-                                         <span t-field="o.invoice_id.invoice_number"/>
+                                         <span style="font-size:11px;" t-field="o.invoice_id.invoice_number"/>
                                     </div>
                                     <div class="col-1 border border-dark p-2 text-center" >
-                                        <span t-field="o.invoice_id.invoice_ctrl_number"/>
+                                        <span style="font-size:11px;" t-field="o.invoice_id.invoice_ctrl_number"/>
                                     </div>
                                     <div class="col-3 border border-dark p-2 text-center" >
-                                        <span t-field="line.name.name"/>
+                                        <span style="font-size:11px;" t-field="line.name.name"/>
                                     </div>
                                     <div class="col-1 border border-dark p-2 text-center" >
-                                        <span style="font-size:11px;" t-esc="o.float_format(o.invoice_id.amount_total)" />
+                                        <span style="font-size:11px;" t-esc="o.float_format(abs(o.invoice_id.amount_total_signed))" />
                                     </div>
                                     <div class="col-1 border border-dark p-2 text-center" >
                                         <span  style="font-size:11px;"  t-esc="o.float_format(line.base)" />
@@ -175,8 +180,18 @@
                                         <span style="font-size:11px;"  t-esc="o.float_format(line.sustraendo)" /> 
                                     </div>
                                     <div class="col-1 border border-dark p-2 text-right" >
-                                       <span  style="font-size:11px;"  t-esc="o.float_format(line.total)"  />  
+                                       <span  style="font-size:11px;"  t-esc="o.float_format(line.total)"  /> 
+                                       <t t-set="total_ret" t-value="total_ret+line.total"/> 
                                     </div>
+                                </div>
+                                <div class="row"> <!-- style="background-color:#FFFFFF;"-->
+                                    <div class="col-11 text-right" >
+                                       <span style="font-size:11px;"> Total:  </span>
+                                    </div>
+                                    <div class="col-1 text-right" >
+                                       <span style="font-size:11px;"><t t-esc="o.float_format(total_ret)"/></span>
+                                    </div>
+
                                 </div>
                                 <br/>
                                 <br/>
@@ -413,7 +428,7 @@
             name="isrl_retention.template_vat_isrl_voucher"
             file="isrl_retention.template_vat_isrl_voucher"
             paperformat="isrl_retention.paperformat_isrl_retention"
-            />
+            /><!--paperformat="isrl_retention.paperformat_isrl_retention"-->
     <report
             id="action_report_arc"
             string="ARC "
@@ -422,7 +437,7 @@
             name="isrl_retention.report_arc"
             file="isrl_retention.report_arc"
             paperformat="isrl_retention.paperformat_isrl_arc"
-            />
+            /><!-- paperformat="isrl_retention.paperformat_isrl_arc" -->
 
 
 </odoo>

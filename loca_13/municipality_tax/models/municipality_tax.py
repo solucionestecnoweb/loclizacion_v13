@@ -188,7 +188,15 @@ class MUnicipalityTax(models.Model):
     # We need this field for the reports
     company_id = fields.Many2one('res.company', string="Company", default=lambda self: self.env.company)
     move_id = fields.Many2one('account.move', string='Id del movimiento')
+    invoice_number=fields.Char(string='Nro de Factura', compute='_factura_prov_cli')
 
+    #@api.depends('invoice_id')
+    def _factura_prov_cli(self):
+    	self.invoice_number="...."
+        #factura= self.env['account.move'].search([('name','=',self.invoice_id.id)])
+        #for det in factura:
+            #invoice_number=det.invoice_number
+        #self.invoice_number= str(invoice_number)
 
     @api.onchange('partner_id')
     def _rif(self):
@@ -296,15 +304,32 @@ class MUnicipalityTax(models.Model):
         return super().create(vals)
 
 
+    def conv_div_extranjera(self,valor):
+        self.invoice_id.currency_id.id
+        fecha_contable_doc=self.invoice_id.date
+        monto_factura=self.invoice_id.amount_total
+        valor_aux=0
+        #raise UserError(_('moneda compañia: %s')%self.company_id.currency_id.id)
+        if self.invoice_id.currency_id.id!=self.company_id.currency_id.id:
+            tasa= self.env['res.currency.rate'].search([('currency_id','=',self.invoice_id.currency_id.id),('name','<=',self.invoice_id.date)],order="name asc")
+            for det_tasa in tasa:
+                if fecha_contable_doc>=det_tasa.name:
+                    valor_aux=det_tasa.rate
+            rate=round(1/valor_aux,2)  # LANTA
+            #rate=round(valor_aux,2)  # ODOO SH
+            resultado=valor/rate
+        else:
+            resultado=valor
+        return resultado
 
     def registro_movimiento_retencion(self,consecutivo_asiento):
         name = consecutivo_asiento
         signed_amount_total=0
         #raise UserError(_('self.move_id.name = %s')%self.invoice_id.name)
         if self.type=="in_invoice":
-            signed_amount_total=self.amount
+            signed_amount_total=self.amount #self.conv_div_extranjera(self.amount)
         if self.type=="out_invoice":
-            signed_amount_total=(-1*self.amount)
+            signed_amount_total=-1*self.amount #(-1*self.conv_div_extranjera(self.amount))
 
         if self.type=="out_invoice" or self.type=="out_refund" or self.type=="out_receipt":
             id_journal=self.partner_id.purchase_jrl_id.id
@@ -330,7 +355,7 @@ class MUnicipalityTax(models.Model):
 
     def registro_movimiento_linea_retencion(self,id_movv,consecutivo_asiento):
         name = consecutivo_asiento
-        valores = self.amount #VALIDAR CONDICION
+        valores = self.amount #self.conv_div_extranjera(self.amount) #VALIDAR CONDICION
         cero = 0.0
         if self.type=="out_invoice" or self.type=="out_refund" or self.type=="out_receipt":
             cuenta_ret_cliente=self.partner_id.account_ret_muni_receivable_id.id# cuenta retencion cliente

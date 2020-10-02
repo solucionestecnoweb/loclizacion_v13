@@ -52,6 +52,14 @@ class RetentionVat(models.Model):
     lines_id = fields.One2many(comodel_name='isrl.retention.invoice.line', inverse_name='retention_id', string='Lines')
     
     state = fields.Selection([('draft', 'Draft'), ('done', 'Done'),], string='State', readonly=True, default='draft')
+    invoice_number=fields.Char(string='Nro de Factura', compute='_factura_prov_cli')
+
+    def _factura_prov_cli(self):
+        self.invoice_number="...."
+        """factura= self.env['account.move'].search([('id','=',self.invoice_id.id)])
+        for det in factura:
+            invoice_number=det.invoice_number
+        self.invoice_number= invoice_number"""
 
     def doc_cedula(self,aux):
         #nro_doc=self.partner_id.vat
@@ -111,15 +119,55 @@ class RetentionVat(models.Model):
             moves= self.env['account.move'].search([('id','=',idv_move)])
             moves.filtered(lambda move: move.journal_id.post_at != 'bank_rec').post()
 
+    def total_ret(self):
+        total_retenido=0
+        aux_code=0
+        aux_retention=0
+        sustraendo=0
+        aux_sustraendo=0
+        busca=self.env['isrl.retention.invoice.line'].search([('retention_id','=',self.id)],order="code asc")
+        for det in busca:
+            aux_retention=aux_retention+det.retention
+            aux_sustraendo=det.sustraendo
+            if aux_code==0:
+                aux_code=det.code
+                sustraendo=sustraendo+aux_sustraendo
+
+            if aux_code!=det.code:
+                sustraendo=sustraendo+aux_sustraendo
+                cont_sust=0
+                aux_sustraendo=0
+        total_retenido=aux_retention-sustraendo
+        return total_retenido
+
+
+    def conv_div_extranjera(self,valor):
+        self.invoice_id.currency_id.id
+        fecha_contable_doc=self.invoice_id.date
+        monto_factura=self.invoice_id.amount_total
+        valor_aux=0
+        #raise UserError(_('moneda compañia: %s')%self.company_id.currency_id.id)
+        if self.invoice_id.currency_id.id!=self.invoice_id.company_id.currency_id.id:
+            tasa= self.env['res.currency.rate'].search([('currency_id','=',self.invoice_id.currency_id.id),('name','<=',self.invoice_id.date)],order="name asc")
+            for det_tasa in tasa:
+                if fecha_contable_doc>=det_tasa.name:
+                    valor_aux=det_tasa.rate
+            rate=round(1/valor_aux,2)  # LANTA
+            #rate=round(valor_aux,2)  # ODOO SH
+            resultado=valor/rate
+        else:
+            resultado=valor
+        return resultado
+
     def registro_movimiento_retencion(self,consecutivo_asiento):
         #raise UserError(_('darrell = %s')%self.partner_id.vat_retention_rate)
         name = consecutivo_asiento
         signed_amount_total=0
         #amount_itf = round(float(total_monto) * float((igtf_porcentage / 100.00)),2)
         if self.invoice_id.type=="in_invoice" or self.invoice_id.type=="in_receipt":
-            signed_amount_total=self.vat_retentioned
+            signed_amount_total=self.total_ret() #self.conv_div_extranjera(self.total_ret()) #self.vat_retentioned
         if self.type=="out_invoice" or self.type=="out_receipt":
-            signed_amount_total=(-1*self.vat_retentioned)
+            signed_amount_total=-1*self.total_ret() #self.conv_div_extranjera(self.total_ret()) #(-1*self.vat_retentioned)
 
         if self.invoice_id.type=="out_invoice" or self.invoice_id.type=="out_refund" or self.invoice_id.type=="out_receipt":
             id_journal=self.partner_id.sale_isrl_id.id
@@ -151,8 +199,9 @@ class RetentionVat(models.Model):
     def registro_movimiento_linea_retencion(self,id_movv,consecutivo_asiento):
         #raise UserError(_('ID MOVE = %s')%id_movv)
         name = consecutivo_asiento
-        valores = self.vat_retentioned #VALIDAR CONDICION
+        valores = self.total_ret() #self.conv_div_extranjera(self.total_ret()) #self.vat_retentioned #VALIDAR CONDICION
         cero = 0.0
+        #raise UserError(_('valores = %s')%valores)
         if self.invoice_id.type=="out_invoice" or self.invoice_id.type=="out_refund" or self.invoice_id.type=="out_receipt":
             cuenta_ret_cliente=self.partner_id.account_isrl_receivable_id.id# cuenta retencion cliente
             cuenta_ret_proveedor=self.partner_id.account_isrl_payable_id.id#cuenta retencion proveedores
@@ -326,8 +375,10 @@ class RetentionVat(models.Model):
             item.vat_retentioned = 0 
             for line in item.lines_id :
                 item.vat_retentioned += line.total
+                #item.vat_retentioned += line.total
 
     amount_untaxed = fields.Float(string='Base Imponible',compute='_compute_amount_untaxed')
+    #vat_retentioned = fields.Float(string='ISLRretenido')
     vat_retentioned = fields.Float(string='ISLRretenido',compute='_compute_vat_retentioned')
     
     

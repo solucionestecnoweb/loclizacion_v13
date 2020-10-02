@@ -57,6 +57,23 @@ class AccountMove(models.Model):
 
     wh_muni_id = fields.Many2one('municipality.tax', string='Withholding municipal tax', readonly=True, copy=False)
 
+    def conv_div_nac(self,valor):
+        self.currency_id.id
+        fecha_contable_doc=self.date
+        monto_factura=self.amount_total
+        valor_aux=0
+        #raise UserError(_('moneda compañia: %s')%self.company_id.currency_id.id)
+        if self.currency_id.id!=self.company_id.currency_id.id:
+            tasa= self.env['res.currency.rate'].search([('currency_id','=',self.currency_id.id),('name','<=',self.date)],order="name asc")
+            for det_tasa in tasa:
+                if fecha_contable_doc>=det_tasa.name:
+                    valor_aux=det_tasa.rate
+            rate=round(1/valor_aux,2)  # LANTA
+            #rate=round(valor_aux,2)  # ODOO SH
+            resultado=valor*rate
+        else:
+            resultado=valor
+        return resultado
 
     def _create_muni_wh_voucher(self):
 
@@ -80,7 +97,7 @@ class AccountMove(models.Model):
                     'aliquot': item.concept_id.aliquot,
                     'concept_id': item.concept_id.id,
                     #'base_tax': self.amount_untaxed,
-                    'base_tax': base_impuesto, # correcion darrell
+                    'base_tax': self.conv_div_nac(base_impuesto), # correcion darrell
                     'invoice_id': self.id,
                     'invoice_date' : self.date,
                     'invoice_number': self.invoice_number,
@@ -167,7 +184,7 @@ class AccountMove(models.Model):
                     invoice_ctrl_number=det_mov_line.invoice_ctrl_number
                     tipe=det_mov_line.type
                     concept_id=det_mov_line.concept_id.id
-                #raise UserError(_('nombre2 = %s')%nombre)
+                #raise UserError(_('lista_mov_line = %s')%lista_mov_line)
                 lista_mov_line.unlink()
                 move_obj = self.env['municipality.tax.line']
                 valor={
