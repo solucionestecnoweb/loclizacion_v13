@@ -103,7 +103,9 @@ class resumen_libros(models.TransientModel):
             for det_tasa in tasa:
                 monto_nativo=det_tasa.amount_untaxed_signed
                 monto_extran=det_tasa.amount_untaxed
-                valor_aux=abs(monto_nativo/(monto_extran+0.0000000000000001))
+                if not det_tasa.amount_untaxed:
+                    monto_extran=0.000000000000000000000000000000000000000000001
+                valor_aux=abs(monto_nativo/monto_extran)
             rate=round(valor_aux,3)  # LANTA
             #rate=round(valor_aux,2)  # ODOO SH
             resultado=valor*rate
