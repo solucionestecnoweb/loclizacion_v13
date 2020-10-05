@@ -155,18 +155,18 @@ class resumen_libros(models.TransientModel):
         resultado=str(tipo_doc)+str(nro_doc)
         return resultado
 
-    def ret_iva(self):
+    def ret_iva(self): # calcula las retenciones que han hecho los clientes
         cursor_resumen = self.env['account.move.line.resumen'].search([
             ('fecha_comprobante','>=',self.date_from),
             ('fecha_comprobante','<=',self.date_to),
             #('fecha_fact','<',self.date_from),
             #('fecha_fact','>=',self.date_to),
-            ('state_voucher_iva','=','posted'),
             ('type','in',('out_invoice','out_refund','out_receipt'))
             ])
         total_ret_iva=0
         for det in cursor_resumen:
-            total_ret_iva=total_ret_iva+det.total_ret_iva
+        	if det.vat_ret_id.state=="posted":
+        		total_ret_iva=total_ret_iva+det.total_ret_iva
         return total_ret_iva
 
     def debitos_fiscales(self):
@@ -638,7 +638,7 @@ class resumen_libros(models.TransientModel):
         ws1.write_merge(row,row, 9, 9, "0,00",header_style_r)
         row=row+1
         ws1.write_merge(row,row, 4, 4, (row-9),header_style_c)
-        ws1.write_merge(row,row, 5, 7,"Creédtos Adquiridos por Cesiones de Percepciones",header_style)
+        ws1.write_merge(row,row, 5, 7,"Crédtos Adquiridos por Cesiones de Percepciones",header_style)
         ws1.write_merge(row,row, 8, 8, "0,00",header_style_r)
         ws1.write_merge(row,row, 9, 9, "0,00",header_style_r)
         row=row+1
