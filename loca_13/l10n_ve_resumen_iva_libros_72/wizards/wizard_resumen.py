@@ -162,7 +162,7 @@ class resumen_libros(models.TransientModel):
             #('fecha_fact','<',self.date_from),
             #('fecha_fact','>=',self.date_to),
             ('state_voucher_iva','=','posted'),
-            ('type','in',('in_invoice','in_refund','in_receipt'))
+            ('type','in',('out_invoice','out_refund','out_receipt'))
             ])
         total_ret_iva=0
         for det in cursor_resumen:
@@ -433,6 +433,11 @@ class resumen_libros(models.TransientModel):
         ws1.write_merge(row,row, 9, 9, "0,00",header_style_r)
         row=row+1
         ws1.write_merge(row,row, 4, 4, (row-6),header_style_c)
+        ws1.write_merge(row,row, 5, 7,"Importaciones No Gravadas",header_style)
+        ws1.write_merge(row,row, 8, 8,"0,00",header_style_r)
+        ws1.write_merge(row,row, 9, 9, "0,00",header_style_r)
+        row=row+1
+        ws1.write_merge(row,row, 4, 4, (row-6),header_style_c)
         ws1.write_merge(row,row, 5, 7,"Importaciones Gravadas por Alicuota General",header_style)
         ws1.write_merge(row,row, 8, 8, "0,00",header_style_r)
         ws1.write_merge(row,row, 9, 9, "0,00",header_style_r)
@@ -468,6 +473,11 @@ class resumen_libros(models.TransientModel):
         ws1.write_merge(row,row, 5, 7,"Total Compras y Créditos Fiscales del Período",header_style)
         ws1.write_merge(row,row, 8, 8,sub_total2,header_style_r)
         ws1.write_merge(row,row, 9, 9,sub_total22,header_style_r)
+
+        row=row+1
+        ws1.write_merge(row,row, 4, 9, "CALCULO DEL CREDITO DEDUCIBLE",sub_header_style)
+        #ws1.write_merge(row,row, 8, 8, "BASE IMPONIBLE",sub_header_style)
+        #ws1.write_merge(row,row, 9, 9, "CRÉDITO FISCAL",sub_header_style)
         row=row+1
         ws1.write_merge(row,row, 4, 4, (row-6),header_style_c)
         ws1.write_merge(row,row, 5, 7,"Creditos Fiscales Totalmente Deducibles ",header_style)
