@@ -638,7 +638,7 @@ class resumen_libros(models.TransientModel):
         ws1.write_merge(row,row, 9, 9, "0,00",header_style_r)
         row=row+1
         ws1.write_merge(row,row, 4, 4, (row-9),header_style_c)
-        ws1.write_merge(row,row, 5, 7,"Crédtos Adquiridos por Cesiones de Percepciones",header_style)
+        ws1.write_merge(row,row, 5, 7,"Créditos Adquiridos por Cesiones de Percepciones",header_style)
         ws1.write_merge(row,row, 8, 8, "0,00",header_style_r)
         ws1.write_merge(row,row, 9, 9, "0,00",header_style_r)
         row=row+1
