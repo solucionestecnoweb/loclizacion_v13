@@ -88,6 +88,7 @@ class XmlLines(models.Model):
         xml = open('isrl_odoo.xml') # Habilitar
         #xml = open('/home/admin-odoo/odoo/odoo_addons/isrl_retention/static/doc/isrl_odoo.xml') # Habilitar
         #xml = open('/mnt/extra-addons/isrl_retention/static/doc/isrl_odoo.xml') # Habilitar
+        #xml = open('/opt/odoo/addons/isrl_retention/static/doc/isrl_odoo.xml') # Habilitar
         out = xml.read()
         base64.b64encode(bytes(out, 'utf-8'))
         action = self.env.ref('isrl_retention.action_account_xml_wizard_descargar').read()[0]

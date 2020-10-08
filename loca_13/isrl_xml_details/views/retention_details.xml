@@ -11,7 +11,7 @@
                 <form string="">
                 <header>
                     <button name="generar_xml" states="por_generar" type="object" string="Generar XML"/>
-                    <button name="views_detalle" states="por_generar" type="object" string="Importar"/>
+                    <button name="views_detalle" states="por_generar" type="object" string="Exportar/Importar a Excel"/>
                     <field name="state" widget="statusbar" statusbar_visible="por_generar,generada"/>
                 </header>
                     <sheet>
