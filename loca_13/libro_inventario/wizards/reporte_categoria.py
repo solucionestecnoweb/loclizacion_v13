@@ -80,7 +80,7 @@ class ReporteCategoria(models.TransientModel):
                 
                 inicial =  self.env['product.product.kardex.line'].search([
                     ('name','=',item.id),
-                    ('fecha','<=',self.date_from),
+                    ('fecha','<',self.date_from),
                     ])
 
                 if len(inicial) > 0:
@@ -88,6 +88,10 @@ class ReporteCategoria(models.TransientModel):
                     libro.cantidad_inicial = inicial[cantidad_inicial - 1].total 
                     libro.costo_intradas   = inicial[cantidad_inicial -1 ].promedio
                     libro.total_bolivares_inicial = inicial[cantidad_inicial -1].total_bolivares
+
+                    libro.total = inicial[cantidad_inicial - 1].total 
+                    libro.promedio = inicial[cantidad_inicial -1 ].promedio
+                    libro.total_bolivares =  inicial[cantidad_inicial -1].total_bolivares
 
                 kardex_line  =  self.env['product.product.kardex.line'].search([
                     ('name','=',item.id),
@@ -107,20 +111,16 @@ class ReporteCategoria(models.TransientModel):
                     
 
                     for sal in kardex_line :
-                        if sal.cantidad_salidas > 0:
-                            salida += 1 
-                            monto_salida += sal.total_bolivares_salida
-                            cantidad_salidas += sal.cantidad_salidas
-                        else :
-                            libro.cantidad_entradas += sal.cantidad_entradas
-                            libro.costo_entradas +=  sal.costo_entradas
-                            libro.total_bolivares_entradas += sal.total_bolivares_entradas
-                    if salida > 0:
-                        libro.cantidad_salidas = cantidad_salidas
-                        libro.total_bolivares_salida = monto_salida
-                        libro.costo_salidas = monto_salida / salida if salida > 0 else cantidad_salidas / monto_salida
+                        libro.cantidad_entradas += sal.cantidad_entradas
+                        libro.total_bolivares_entradas += sal.total_bolivares_entradas
 
+                        libro.cantidad_salidas += sal.cantidad_salidas
+                        libro.total_bolivares_salida += sal.total_bolivares_salida
+                    
+                    libro.costo_entradas = libro.total_bolivares_entradas / libro.cantidad_entradas  if libro.total_bolivares_entradas  > 0 else 0
+                    libro.costo_salidas  = libro.total_bolivares_salida / libro.cantidad_salidas if libro.total_bolivares_salida > 0 else 0 
 
+                    
         self.libro =  self.env['libro.inventario.categoria'].search([])
         for item in self.libro:
             for l in item.line_id:

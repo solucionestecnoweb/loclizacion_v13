@@ -12,6 +12,8 @@
                     <field name="value"/>
                     <field name="remaining_value"/>
                     <field name="remaining_qty"/>
+                    <field name="date"/>
+                    <field name="account_move_id"/>
                 </tree>
             </field>
         </record>

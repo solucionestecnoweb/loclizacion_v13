@@ -5,7 +5,7 @@
     'author': 'Ing. Jose Blanco',
     'website': 'gregoriocode.com',
     'category': 'account',
-    'depends': ['product','stock','account','mrp','stock_account'],
+    'depends': ['product','stock','account','mrp','purchase_stock','sale_stock','stock_account',"stock"],
     'description': """KARDEX VALORIZADO""",
     'demo': [],
     'data': [

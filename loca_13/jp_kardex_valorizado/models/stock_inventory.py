@@ -14,8 +14,16 @@ class StockInventoryLine(models.Model):
 
 
 class StockValuationLayer(models.Model):
-
     _inherit = 'stock.valuation.layer'
 
+    date = fields.Datetime(related='stock_move_id.date')
+    
+    
     # Adicional de digitos al campo (8)
     unit_cost = fields.Float('Unit Value', readonly=True, digits=(12,8))
+
+    @api.model
+    def create(self, vals):
+        t =  super().create(vals)
+        t.stock_move_id.set_kardex_price_unit()
+        return t 
