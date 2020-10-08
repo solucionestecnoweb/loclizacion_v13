@@ -11,6 +11,7 @@
                 <form string="">
                 <header>
                     <button name="generar_xml" states="por_generar" type="object" string="Generar XML"/>
+                    <button name="views_detalle" states="por_generar" type="object" string="Importar"/>
                     <field name="state" widget="statusbar" statusbar_visible="por_generar,generada"/>
                 </header>
                     <sheet>
@@ -74,6 +75,53 @@
             <field name="view_mode">form</field>
             <field name="view_id" ref="account_details_view_form"/>
             <field name="target">new</field>
+        </record>
+
+        <!--account.xml.detalle.line form view -->
+        <record id="account_xml_detalle_line_view_form" model="ir.ui.view">
+            <field name="name">account.xml.detalle.line.view.form</field>
+            <field name="model">account.xml.detalle.line</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="rif_retenido"/>
+                            <field name="numero_factura"/>
+                            <field name="numero_control"/>
+                            <field name="fecha_operacion"/>
+                            <field name="codigo_concepto"/>
+                            <field name="monto_operacion"/>
+                            <field name="porcentaje_retencion"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--account.xml.detalle.line tree view -->
+        <record id="account_xml_detalle_line_tree" model="ir.ui.view">
+            <field name="name">account.xml.detalle.line.view.tree</field>
+            <field name="model">account.xml.detalle.line</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- Add your fields here -->
+                    <field name="id"/>
+                    <field name="rif_retenido"/>
+                    <field name="numero_factura"/>
+                    <field name="numero_control"/>
+                    <field name="fecha_operacion"/>
+                    <field name="codigo_concepto"/>
+                    <field name="monto_operacion"/>
+                    <field name="porcentaje_retencion"/>
+                </tree>
+            </field>
+        </record>
+
+         <record id="action_account_reten_details_line" model="ir.actions.act_window">
+            <field name="name">Detalle ISLR</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.xml.detalle.line</field>
+            <field name="view_mode">tree,form</field>
         </record>
 
 

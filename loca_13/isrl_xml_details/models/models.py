@@ -40,8 +40,14 @@ class XmlLines(models.Model):
     report = fields.Binary('XML', filters='.xls', readonly=True)
     name =  fields.Char('File Name', size=32)
     company_id = fields.Many2one('res.company','Company',default=lambda self: self.env.user.company_id.id, readonly=True)
-    line_id  = fields.One2many(comodel_name='account.xml.detalle.line', inverse_name='detalle_id', string='Lineas')
+    line_id    = fields.One2many(comodel_name='account.xml.detalle.line', inverse_name='detalle_id', string='Lineas')
     
+    def views_detalle(self):
+        action = self.env.ref('isrl_xml_details.action_account_reten_details_line').read()[0]
+        action['domain'] = [('id', 'in', self.line_id.ids)]
+        action['context'] = dict(self._context, default_detalle_id=self.id)
+        return action
+
     def generar_xml(self):
         periodo = str(self.date_from.year) 
         rif= self.env.company.vat
@@ -74,12 +80,14 @@ class XmlLines(models.Model):
             elemento_hijo_8 = ET.SubElement(elemento_hijo_1, 'PorcentajeRetencion').text=str(item.porcentaje_retencion)
 
         tree = ET.ElementTree(elemento_1)
-        #tree.write('isrl_odoo.xml', encoding='utf-8',xml_declaration=True) #Habilitar
+        tree.write('isrl_odoo.xml', encoding='utf-8',xml_declaration=True) #Habilitar
         #tree.write('/opt/odoo/addons/isrl_retention/static/doc/isrl_odoo.xml', encoding='utf-8',xml_declaration=True)
-        tree.write('/home/admin-odoo/odoo/odoo_addons/isrl_retention/static/doc/isrl_odoo.xml', encoding='utf-8',xml_declaration=True)
+        #tree.write('/mnt/extra-addons/isrl_retention/static/doc/isrl_odoo.xml', encoding='utf-8',xml_declaration=True)
+        #tree.write('/home/admin-odoo/odoo/odoo_addons/isrl_retention/static/doc/isrl_odoo.xml', encoding='utf-8',xml_declaration=True)
 
-        #xml = open('isrl_odoo.xml') # Habilitar
-        xml = open('/home/admin-odoo/odoo/odoo_addons/isrl_retention/static/doc/isrl_odoo.xml') # Habilitar
+        xml = open('isrl_odoo.xml') # Habilitar
+        #xml = open('/home/admin-odoo/odoo/odoo_addons/isrl_retention/static/doc/isrl_odoo.xml') # Habilitar
+        #xml = open('/mnt/extra-addons/isrl_retention/static/doc/isrl_odoo.xml') # Habilitar
         out = xml.read()
         base64.b64encode(bytes(out, 'utf-8'))
         action = self.env.ref('isrl_retention.action_account_xml_wizard_descargar').read()[0]
