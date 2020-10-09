@@ -275,8 +275,7 @@ class MUnicipalityTax(models.Model):
        """Confirmed the municipal retention voucher."""
        if not self.transaction_date:
             raise ValidationError("Debe establecer una fecha de Transacción")
-       raise ValidationError("Angel")
-       #self.state = 'posted'
+       self.state = 'posted'
        nombre_ret_municipal = self.get_name()
        id_move=self.registro_movimiento_retencion(nombre_ret_municipal)
        idv_move=id_move.id
