@@ -157,8 +157,9 @@ class BsoftContratoReport2(models.TransientModel):
         retiva = str(retiva.name)
 
         #ruta="C:/Odoo 13.0e/server/odoo/LocalizacionV13/l10n_ve_txt_iva/wizard/txt_generacion.txt"
-        ruta="/opt/odoo/addons/l10n_ve_txt_iva/wizard/txt_generacion.txt"
+        #ruta="/mnt/extra-addons/l10n_ve_txt_iva/wizard/txt_generacion.txt"
         #ruta="/home/odoo/src/user/LocalizacionV13/l10n_ve_txt_iva/wizard/txt_generacion.txt"
+        ruta="/home/odoo/src/txt_generacion.txt"
         #raise UserError(_('mama = %s')%rec.type)
 
         with open(ruta, "w") as file:
