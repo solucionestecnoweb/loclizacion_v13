@@ -251,7 +251,7 @@ class BsoftContratoReport2(models.TransientModel):
 
 
         self.write({'file_data': base64.encodestring(open(ruta, "rb").read()),
-                    'file_name': "Lanta_Retenciones de IVA desde %s hasta %s.txt"%(self.date_from,self.date_to),
+                    'file_name': "Retenciones de IVA desde %s hasta %s.txt"%(self.date_from,self.date_to),
                     })
 
         return self.show_view('Archivo Generado', self._name, 'vat_retention.snc_wizard_retencioniva_form_view', self.id)
