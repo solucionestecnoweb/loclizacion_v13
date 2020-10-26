@@ -133,6 +133,12 @@ class RetentionVat(models.Model):
     journal_id=fields.Char(string='journal_id')
     move_id = fields.Many2one('account.move', string='Id del movimiento')
 
+    def unlink(self):
+        for vat in self:
+            if vat.state=='posted':
+                raise UserError(_("El comprobante de retencion IVA ya esta Publicado, No se puede eliminar"))
+        return super(RetentionVat,self).unlink()      
+
     def formato_fecha2(self):
         fecha = str(self.voucher_delivery_date)
         fecha_aux=fecha
