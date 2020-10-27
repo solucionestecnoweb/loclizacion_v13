@@ -125,6 +125,7 @@ class AccountMove(models.Model):
         for det in cursor_municipality:
             self.env['municipality.tax'].browse(det.id).write({
                 'type': self.type,
+                'invoice_number': self.invoice_number,
                 })
 
 

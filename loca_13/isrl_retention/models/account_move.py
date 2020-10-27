@@ -76,6 +76,7 @@ class AccountMove(models.Model):
                         'invoice_id': self.id,
                         'partner_id': self.partner_id.id,
                         'move_id':self.id,
+                        'invoice_number':self.invoice_number,
                     })
                     for item in self.invoice_line_ids:
                         if item.concept_isrl_id:

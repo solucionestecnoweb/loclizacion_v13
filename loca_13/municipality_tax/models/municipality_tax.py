@@ -188,7 +188,7 @@ class MUnicipalityTax(models.Model):
     # We need this field for the reports
     company_id = fields.Many2one('res.company', string="Company", default=lambda self: self.env.company)
     move_id = fields.Many2one('account.move', string='Id del movimiento')
-    invoice_number=fields.Char(string='Nro de Factura', compute='_factura_prov_cli')
+    invoice_number=fields.Char(string='Nro de Factura')
 
     #@api.depends('invoice_id')
     def _factura_prov_cli(self):

@@ -52,7 +52,7 @@ class RetentionVat(models.Model):
     lines_id = fields.One2many(comodel_name='isrl.retention.invoice.line', inverse_name='retention_id', string='Lines')
     
     state = fields.Selection([('draft', 'Draft'), ('done', 'Done'),], string='State', readonly=True, default='draft')
-    invoice_number=fields.Char(string='Nro de Factura', compute='_factura_prov_cli')
+    invoice_number=fields.Char(string='Nro de Factura')
 
     def _factura_prov_cli(self):
         self.invoice_number="...."

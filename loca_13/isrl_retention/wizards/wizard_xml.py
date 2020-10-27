@@ -76,9 +76,13 @@ class WiizarXml(models.TransientModel):
         tree = ET.ElementTree(elemento_1)
         tree.write('isrl_odoo.xml', encoding='utf-8',xml_declaration=True) #Habilitar
         #tree.write('/opt/odoo/addons/isrl_retention/static/doc/isrl_odoo.xml', encoding='utf-8',xml_declaration=True)
+        #tree.write('/home/admin-odoo/odoo/odoo_addons/isrl_retention/static/doc/isrl_odoo.xml', encoding='utf-8',xml_declaration=True)
+        #tree.write('/mnt/extra-addons/isrl_retention/static/doc/isrl_odoo.xml', encoding='utf-8',xml_declaration=True)
 
         xml = open('isrl_odoo.xml') # Habilitar
         #xml = open('/opt/odoo/addons/isrl_retention/static/doc/isrl_odoo.xml') # Habilitar
+        #xml = open('/home/admin-odoo/odoo/odoo_addons/isrl_retention/static/doc/isrl_odoo.xml') # Habilitar
+        #xml = open('/mnt/extra-addons/isrl_retention/static/doc/isrl_odoo.xml') # Habilitar
         out = xml.read()
         base64.b64encode(bytes(out, 'utf-8'))
         action = self.env.ref('isrl_retention.action_account_xml_wizard_descargar').read()[0]
