@@ -12,7 +12,13 @@
     'category': 'Tools',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','account','libro_ventas','libro_compras','libro_resumen_alicuota'],
+    'depends': ['base',
+    'account',
+    'libro_ventas',
+    'libro_compras',
+    'libro_resumen_alicuota',
+    'l10n_ve_fiscal_requirements',
+    ],
 
     # always loaded
     'data': [
